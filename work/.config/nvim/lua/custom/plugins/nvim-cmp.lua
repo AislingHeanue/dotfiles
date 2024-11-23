@@ -15,7 +15,7 @@ return { -- Autocompletion
         return 'make install_jsregexp'
       end)(),
       dependencies = {
-        {     -- https://github.com/rafamadriz/friendly-snippets
+        { -- https://github.com/rafamadriz/friendly-snippets
           'rafamadriz/friendly-snippets',
           config = function()
             require('luasnip.loaders.from_vscode').lazy_load()
@@ -65,7 +65,8 @@ return { -- Autocompletion
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
         ['<C-y>'] = cmp.mapping.confirm { select = true },
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<C-k>'] = cmp.mapping.confirm { select = true },
+        -- ['<CR>'] = cmp.mapping.confirm { select = true },
         -- ['<Tab>'] = cmp.mapping.select_next_item(),
         -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<C-e>'] = cmp.mapping.abort(),

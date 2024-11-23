@@ -2,12 +2,20 @@ return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
     {
-      "andymass/vim-matchup",
-      keys = {
-        { '<A-z>', '<Plug>(matchup-[%)zf<plug>(matchup-i%)<Plug>(matchup-[%)', desc = "Fold inside the current block", mode = "n" }
+      'nvim-treesitter/nvim-treesitter-context',
+      opts = {
+        multiwindow = true,
+        multiline_threshold = 1
       }
     }
+    -- {
+    --   "andymass/vim-matchup",
+    --   keys = {
+    --     { '<A-z>', '<Plug>(matchup-[%)zf<plug>(matchup-i%)<Plug>(matchup-[%)', desc = "Fold inside the current block", mode = "n" }
+    --   }
+    -- }
   },
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -27,12 +35,16 @@ return { -- Highlight, edit, and navigate code
     matchup = {
       enabled = true,
       disable = { "ruby" },
-    }
-  },
-  -- There are additional nvim-treesitter modules that you can use to interact
-  -- with nvim-treesitter. You should go explore a few and see what interests you:
-  --
-  --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-  --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-  --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    },
+    textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          -- Built-in captures.
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+        },
+      },
+    },
+  }
 }

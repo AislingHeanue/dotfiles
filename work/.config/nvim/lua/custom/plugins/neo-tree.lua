@@ -16,7 +16,7 @@ return {
   },
   opts = {
     filesystem = {
-      hijack_netrw_behavior = "open_current",
+      hijack_netrw_behavior = 'open_current',
       filtered_items = {
         visible = true,
       },
@@ -24,7 +24,9 @@ return {
         width = 30,
         mappings = {
           ['\\'] = 'close_window',
-          ["<leftrelease>"] = "open",
+          ['<leftrelease>'] = 'open',
+          ['l'] = 'open',
+          ['h'] = 'close_node'
         },
       },
     },
