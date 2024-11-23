@@ -1,4 +1,4 @@
-export ZSH="/home/aisling/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
@@ -57,7 +57,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/dev/hpe-cds/pc-compute/.env
+# source ~/dev/hpe-cds/pc-compute/.env
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
