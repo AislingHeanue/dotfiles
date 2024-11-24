@@ -20,6 +20,7 @@ return {
       window = {
         width = 30,
         mappings = {
+          ['<space>'] = '',
           ['\\'] = 'close_window',
           ['<leftrelease>'] = 'open',
           ['l'] = 'open',
