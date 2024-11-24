@@ -58,7 +58,7 @@ return { -- Autocompletion
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        -- Scroll the documentation window [b]ack / [f]orward
+        -- Scroll the documentation window [B]ack / [F]orward
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         -- Accept ([y]es) the completion.

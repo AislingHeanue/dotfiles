@@ -12,14 +12,12 @@ return { -- Collection of various small independent plugins/modules
         use_nvim_treesitter = true
       }
     }
-
     -- Use select inside an indented block. Also animates the left
     -- margin of a blcok for clarity
     -- - vii - Select inside indent
     -- - vai - Select around indent
     -- - [i  - Go to start of indent
     -- - ]i  - Go to end of indent
-    --
     -- Note: these settings will likely need to be changed
     -- on a per-filetype basis
     require('mini.indentscope').setup {
@@ -45,7 +43,6 @@ return { -- Collection of various small independent plugins/modules
     local statusline = require 'mini.statusline'
     -- set use_icons to true if you have a Nerd Font
     statusline.setup { use_icons = vim.g.have_nerd_font }
-
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we set the section for
     -- cursor location to LINE:COLUMN
@@ -53,7 +50,5 @@ return { -- Collection of various small independent plugins/modules
     statusline.section_location = function()
       return '%2l:%-2v'
     end
-    -- ... and there is more!
-    --  Check out: https://github.com/echasnovski/mini.nvim
   end
 }

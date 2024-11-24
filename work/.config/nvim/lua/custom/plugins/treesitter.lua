@@ -10,12 +10,6 @@ return { -- Highlight, edit, and navigate code
         multiline_threshold = 1
       }
     }
-    -- {
-    --   "andymass/vim-matchup",
-    --   keys = {
-    --     { '<A-z>', '<Plug>(matchup-[%)zf<plug>(matchup-i%)<Plug>(matchup-[%)', desc = "Fold inside the current block", mode = "n" }
-    --   }
-    -- }
   },
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`

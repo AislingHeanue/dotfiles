@@ -57,3 +57,6 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 15
+-- Spell Checking
+vim.opt.spelllang = 'en_gb'
+vim.opt.spell = true

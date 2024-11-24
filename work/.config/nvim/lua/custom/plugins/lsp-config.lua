@@ -3,7 +3,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true },     -- Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = true }, -- Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     -- Useful status updates for LSP.
@@ -57,16 +57,16 @@ return {
         map('gD', require('telescope.builtin').lsp_type_definitions, '[G]oto Type [D]efinition')
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'List [S]ymbols')
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>rs', vim.lsp.buf.rename, '[S]ymbol')
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+        map('<leader>ea', vim.lsp.buf.code_action, 'Preform code [A]ction under cursor', { 'n', 'x' })
         -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
@@ -129,9 +129,9 @@ return {
       helm_ls = {},
       sqlls = {},
       terraformls = {},
-      bzl = {},          -- starlark
+      bzl = {},      -- starlark
       jqls = {},
-      marksman = {},     -- markdown
+      marksman = {}, -- markdown
       yamlls = {},
       jsonls = {},
       bashls = {},
