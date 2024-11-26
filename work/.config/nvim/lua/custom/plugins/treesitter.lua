@@ -3,6 +3,7 @@ return { -- Highlight, edit, and navigate code
   build = ':TSUpdate',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/playground',
     {
       'nvim-treesitter/nvim-treesitter-context',
       opts = {

@@ -8,12 +8,11 @@ tmux has-session -t $NAME &> /dev/null
 
 if [ $? != 0 ]
 then
-	tmux new-session -s $NAME -n nvim -d -c "/home/aisling/dev/$NAME"
-    tmux new-window -t $NAME:1 -n git -c "/home/aisling/dev/$NAME" lazygit
+    tmux new-session -s $NAME -n nvim -d -c "/home/aisling/dev/$NAME" vi .
     tmux new-window -t $NAME:2 -n $NAME -c "/home/aisling/dev/$NAME" 
-    tmux new-window -t $NAME:3 -n ~ -c "/home/aisling" 
+    tmux new-window -t $NAME:3 -n ~ -c "/home/aisling"
 fi
 
-tmux attach -t $NAME
+tmux attach -t $NAME:1
 
 

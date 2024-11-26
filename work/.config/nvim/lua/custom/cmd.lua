@@ -18,6 +18,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    -- Get the module name dynamically
+    local module_name = vim.fn.system("go list -m"):gsub("%s+", "")
+    if module_name == "" then
+      return
+    end
+
+    -- Use `goimports` via stdin/stdout to format the buffer in-place
+    local goimports_cmd = string.format("goimports -local %s", module_name)
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+    local formatted = vim.fn.systemlist(goimports_cmd, lines)
+
+    -- Replace buffer contents with formatted output
+    vim.api.nvim_buf_set_lines(0, 0, -1, true, formatted)
+  end
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
