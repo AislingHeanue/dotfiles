@@ -9,7 +9,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<A-u>', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
     filesystem = {
@@ -21,7 +21,7 @@ return {
         width = 30,
         mappings = {
           ['<space>'] = '',
-          ['\\'] = 'close_window',
+          ['<A-u>'] = 'close_window',
           ['<leftrelease>'] = 'open',
           ['l'] = 'open',
           ['h'] = 'close_node'

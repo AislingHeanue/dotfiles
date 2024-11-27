@@ -23,9 +23,19 @@ vim.keymap.set('n', '<A-.>', '<C-w>5>')
 -- make window taller
 vim.keymap.set('n', '<A-t>', '<C-w>+')
 vim.keymap.set('n', '<A-s>', '<C-w>-')
+-- quit window
+vim.keymap.set('n', '<A-q>', '<C-w>q')
+-- window navigation
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-h>', '<C-w>h')
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-j>', '<C-w>j')
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-k>', '<C-w>k')
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-l>', '<C-w>l')
 
 -- Diagnostics
 vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Show [Q]uick fix list' })
 vim.keymap.set('n', '<leader>es', vim.diagnostic.open_float, { desc = 'Show [E]rror message' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+
+-- Move Ctrl+6 to somewhere less awful for my hands
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = true, desc = 'Edit previous file' })
