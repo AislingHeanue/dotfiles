@@ -40,7 +40,7 @@ return { -- Autocompletion
     local lspkind = require 'lspkind'
     luasnip.config.setup {}
     lspkind.init {}
-    -- somethiing about reducing the amount of verbose messages in autocomplete
+    -- something about reducing the amount of verbose messages in autocomplete
     vim.opt.shortmess:append "c"
     -- if I add go-specific snippets
     -- for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/custom/snippets/*.lua', true)) do
