@@ -50,7 +50,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         live_grep = {
           file_ignore_patterns = { 'node_modules/', '.git/', '.venv/' },
           additional_args = function(_)
-            return { "--hidden", "--sortr", "path" }
+            return { "--hidden", "--sort", "path" }
           end
         },
       },

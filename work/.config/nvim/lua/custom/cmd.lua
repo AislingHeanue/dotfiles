@@ -18,6 +18,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    ---@diagnostic disable-next-line: undefined-field
+    vim.opt.spelloptions:remove("noplainbuffer")
+
+    vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+      pattern = "*",
+      callback = function()
+        ---@diagnostic disable-next-line: undefined-field
+        vim.opt.spelloptions:remove("noplainbuffer")
+      end,
+    })
+  end,
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
@@ -33,7 +50,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     local formatted = vim.fn.systemlist(goimports_cmd, lines)
 
     -- Replace buffer contents with formatted output
-    vim.api.nvim_buf_set_lines(0, 0, -1, true, formatted)
+    if vim.v.shell_error == 0 then
+      vim.api.nvim_buf_set_lines(0, 0, -1, true, formatted)
+    end
   end
 })
 

@@ -61,3 +61,4 @@ vim.opt.scrolloff = 15
 vim.opt.spelllang = 'en_gb'
 vim.opt.spell = true
 vim.opt.spelloptions = 'camel'
+vim.opt.spellcapcheck = ""
