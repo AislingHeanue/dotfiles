@@ -2,7 +2,7 @@
   description = "My Home Manager Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-23.11";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -29,20 +29,20 @@
           inherit pkgs;
           modules = [
             ./home.nix {
-              settings = {
-                github = {
-                  email = "aislingheanue@gmail.com";
-                  username = "AislingArch";
-                };
-                extra_apps = [
-                  # jellyfin-media-player
-                  # qbittorrent
-                  # rustup
-                  # steam
-                  # timeshift
-                  # vencord
-                ];
-              };
+              # settings = {
+              #   github = {
+              #     email = "aislingheanue@gmail.com";
+              #     username = "AislingArch";
+              #   };
+              #   extra_apps = [
+              #     # jellyfin-media-player
+              #     # qbittorrent
+              #     # rustup
+              #     # steam
+              #     # timeshift
+              #     # vencord
+              #   ];
+              # };
             }
           ];
             # ./zsh.nix

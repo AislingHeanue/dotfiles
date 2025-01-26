@@ -1,16 +1,16 @@
-{ lib, pkgs, settings, ... }:
+{ lib, pkgs, ... }:
 
 {
   home = {
     username = "aisling";
     homeDirectory = "/home/aisling";
 
-    home.packages = with pkgs; [
+    packages = with pkgs; [
       hello
-      # atuin
-      # bat
-      # btop
-      # cmatrix
+      atuin
+      bat
+      btop
+      cmatrix
       # docker
       # # docker-compose
       # eza
@@ -44,20 +44,20 @@
       #   spectacle
       # ]
 
+    ];
+    # ] ++ settings.extra_apps;
 
-    ] ++ settings.extra_apps;
-
-    stateVersion = "23.11";
-  }
+    stateVersion = "24.11";
+  };
   # Your existing Home Manager config
 
-  programs.git = {
-    enable = true;
-    userName = settings.username;
-    userEmail = settings.email;
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = settings.username;
+  #   userEmail = settings.email;
+  # };
 
 
   # Enable Home Manager
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 }
