@@ -53,11 +53,12 @@ plugins=(
     # installed separately
 #	fzf-tab
     zsh-autosuggestions
-	zsh-syntax-highlighting
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-# source ~/dev/hpe-cds/pc-compute/.env
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -76,3 +77,4 @@ else
   export EDITOR='nvim'
   export VISUAL='nvim'
 fi
+
