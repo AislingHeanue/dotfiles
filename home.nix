@@ -1,50 +1,42 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, extra-apps, extra-options, ... }:
 
 {
   home = {
     username = "aisling";
     homeDirectory = "/home/aisling";
 
+
     packages = with pkgs; [
-      hello
       atuin
       bat
       btop
       cmatrix
-      # docker
-      # # docker-compose
-      # eza
-      # find
-      # fzf
-      # go
-      # gofumpt
-      # golangci-lint
-      # gparted
-      # hunspell
-      # neovim
-      # ripgrep
-      # tmux
-      # wget
-      # zoxide
-      #
-      # kitty
-      # chromium
-      # vlc
-      # xournalpp
-      #
-      # kdePackages = [
-      #   ark
-      #   filelight
-      #   gwenview
-      #   kamoso
-      #   kate
-      #   kcolorchooser
-      #   kolourpaint
-      #   okular
-      #   spectacle
-      # ]
+      home-manager
+      eza
+      fzf
+      go
+      gofumpt
+      fd
 
-    ];
+      gparted
+    ] ++ extra-apps;
+      # docker
+    #   # docker-compose
+    #   golangci-lint
+    #   hunspell
+    #   neovim
+    #   ripgrep
+    #   tmux
+    #   wget
+    #   zoxide
+    #
+    #   kitty
+    #   chromium
+    #   vlc
+    #   xournalpp
+    #
+    #
+    # ];
     # ] ++ settings.extra_apps;
 
     stateVersion = "24.11";
@@ -57,7 +49,4 @@
   #   userEmail = settings.email;
   # };
 
-
-  # Enable Home Manager
-  # programs.home-manager.enable = true;
 }

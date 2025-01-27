@@ -1,8 +1,10 @@
 {
-  description = "My Home Manager Flake";
+  description = "My Home Manager Flake for Arch Linux with KDE";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs = {
+      url = "nixpkgs/nixos-24.11";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -10,41 +12,47 @@
     };
   };
 
-  # Intended to be used on Arch. Also make sure to install
-  # plasma-meta
-  # kde-system-meta
-  # base-devel
-  # networkmanager
-  # nvidia
-  # nvidia-prime if needed
+  # Intended to be used on Arch. Packages that are not covered by this file.
+  # All 'system' packages including anything in `make arch-packages`
+  # steam (which requires a large pile of multilib dependencies on arch and therefore should not be installed at user level).
+  # All the KDE apps because are better to use with the version tied to my current KDE: `make kde-packages`
 
   outputs = { nixpkgs, home-manager, ... }:
-    let
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-    in {
-      homeConfigurations = {
-        home = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home.nix {
-              # settings = {
-              #   github = {
-              #     email = "aislingheanue@gmail.com";
-              #     username = "AislingArch";
-              #   };
-              #   extra_apps = [
-              #     # jellyfin-media-player
-              #     # qbittorrent
-              #     # rustup
-              #     # steam
-              #     # timeshift
-              #     # vencord
-              #   ];
-              # };
-            }
+  let
+    # lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
+    homeConfigurations = {
+      home = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+        ];
+
+        extraSpecialArgs = {
+          extra-apps = with pkgs; [
+            jellyfin-media-player
+            qbittorrent
+            rustup
+            # timeshift
+            betterdiscordctl
           ];
+          extra-options = {
+            github ={
+              email = "aislingheanue@gmail.com";
+              username = "AislingArch";
+            };
+            steam-enabled = true;
+          };
+        };
+      };
+    };
+  };
+}
             # ./zsh.nix
             # ./nvim.nix
             # ./plasma.nix
@@ -58,9 +66,5 @@
 
 
             # Add machine-specific configs here (e.g., ./hosts/default.nix)
-          # ];
-        };
-      };
-  };
-}
+      # ];
 
