@@ -35,11 +35,18 @@
 
         extraSpecialArgs = {
           extra-apps = with pkgs; [
+            betterdiscordctl
+            cargo-nextest
+            discord
             jellyfin-media-player
             qbittorrent
             rustup
+            tailscale
+            telegram-desktop
             # timeshift
-            betterdiscordctl
+            yt-dlp
+            zoom
+            z3
           ];
           extra-options = {
             github ={

@@ -1,52 +1,44 @@
-{ lib, pkgs, extra-apps, extra-options, ... }:
-
-{
+{ lib, pkgs, extra-apps, extra-options, ... }: {
   home = {
     username = "aisling";
     homeDirectory = "/home/aisling";
-
 
     packages = with pkgs; [
       atuin
       bat
       btop
       cmatrix
-      home-manager
       eza
+      fd
       fzf
+      git
+      github-cli
       go
       gofumpt
-      fd
+      golangci-lint
+      home-manager
+      lazygit
+      less
+      luarocks
+      man
+      neovim
+      neofetch
+      strace
+      tinygo
+      tldr
+      tree
+      tmux
+      unzip
+      wget
+      yq
+      zoxide
 
       gparted
+      obs-studio
+      xournalpp
     ] ++ extra-apps;
-      # docker
-    #   # docker-compose
-    #   golangci-lint
-    #   hunspell
-    #   neovim
-    #   ripgrep
-    #   tmux
-    #   wget
-    #   zoxide
-    #
-    #   kitty
-    #   chromium
-    #   vlc
-    #   xournalpp
-    #
-    #
-    # ];
-    # ] ++ settings.extra_apps;
 
     stateVersion = "24.11";
   };
-  # Your existing Home Manager config
-
-  # programs.git = {
-  #   enable = true;
-  #   userName = settings.username;
-  #   userEmail = settings.email;
-  # };
-
+  news.display = "silent";
 }

@@ -32,26 +32,23 @@ fi
 # DISABLE_MAGIC_FUNCTIONS="true"
 # ENABLE_CORRECTION="true"
 
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 COMPLETION_WAITING_DOTS="true"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(
     extract
-	history-substring-search
+    history-substring-search
     sudo
-	cp # cpv command (uses rsync)
-	dirhistory # alt-left to go back
-	gh
-	git
-	golang
-	helm
-	kubectl
-	ssh
+    dirhistory # alt-left to go back
+    gh
+    git
+    golang
+    helm
+    kubectl
+    ssh
 
     # installed separately
-#	fzf-tab
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
