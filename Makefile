@@ -16,11 +16,12 @@ arch-packages: kde-packages
 		chromium \
 		docker \
 		docker-compose \
+		gparted \
 		grub \
 		grub-customizer \
 		ipython \
 		kde-system-meta \
-		kitty \
+		konsole \
 		libva-intel-driver \
 		linux \
 		linux-headers \
@@ -45,6 +46,7 @@ arch-packages: kde-packages
 		python-setuptools \
 		sddm \
 		sudo \
+		tailscale \
 		timeshift \
 		ttf-dejavu-nerd \
 		vim \
@@ -82,4 +84,4 @@ bootstrap: arch-packages
 	@nix-channel --update
 	@nix-shell '<home-manager>' -A install
 
-	@home-manager switch --flake .#home
+	@home-manager --extra-experimental-features 'nix-command flakes' switch --flake .#home 
