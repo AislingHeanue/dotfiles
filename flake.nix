@@ -54,6 +54,7 @@
 
           modules = [
             ./home.nix
+            ./packages.nix
           ];
 
           extraSpecialArgs = {
@@ -65,16 +66,8 @@
       };
     };
 }
-# ./zsh.nix
-# ./nvim.nix
 # ./plasma.nix
-# ./apps.nix
-# ./home/plasma.nix # panel config, mainly
-# ./work/plasma.nix # panel config, mainly
-# ./secrets.nix
+# ./panels.nix
+# ./secrets.nix ??
+# tmux, kitty + dircolors, zsh, nvim, ideavimrc, my scripts folder, xournal++ plugins
 # where do i toss work aliases? I guess those don't get put here?
-# other synced stuff to throw in home for now: kitty, tmux, tmux scripts, dircolors,
-# also wallpaper and kitty wallpaper are different make sure to have a flag for that for the 2 homeConfigs
-
-# Add machine-specific configs here (e.g., ./hosts/default.nix)
-# ];
