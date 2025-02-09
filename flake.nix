@@ -46,21 +46,27 @@
         config.allowUnfree = true;
         # overlays = [ nixgl.overlay ];
       };
+      username = "aisling";
+      homeDirectory = "/home/aisling";
     in
     {
       homeConfigurations = {
-        home = home-manager.lib.homeManagerConfiguration {
+        personal = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           modules = [
             ./home.nix
             ./packages.nix
+            ./file.nix
           ];
 
           extraSpecialArgs = {
-            homeProfile = true;
-            inherit plasma-manager;
+            personalProfile = true;
+            dotfilesDir = "${homeDirectory}/Documents/Coding/github/dotfiles";
             inherit nixgl;
+            inherit plasma-manager;
+            inherit username;
+            inherit homeDirectory;
           };
         };
       };
@@ -68,6 +74,5 @@
 }
 # ./plasma.nix
 # ./panels.nix
-# ./secrets.nix ??
-# tmux, kitty + dircolors, zsh, nvim, ideavimrc, my scripts folder, xournal++ plugins
+# ./aliases.nix
 # where do i toss work aliases? I guess those don't get put here?

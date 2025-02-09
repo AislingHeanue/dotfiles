@@ -1,6 +1,8 @@
 {
   pkgs,
   nixgl,
+  username,
+  homeDirectory,
   ...
 }:
 {
@@ -23,8 +25,8 @@
   };
 
   home = {
-    username = "aisling";
-    homeDirectory = "/home/aisling";
+    inherit username;
+    inherit homeDirectory;
     stateVersion = "24.11";
   };
 

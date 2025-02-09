@@ -1,6 +1,6 @@
 .PHONY: update
 update:
-	home-manager switch --flake .#home
+	home-manager switch --flake .#personal
 
 .PHONY: clean
 clean:
@@ -84,4 +84,4 @@ bootstrap: arch-packages
 	@nix-channel --update
 	@nix-shell '<home-manager>' -A install
 
-	@home-manager --extra-experimental-features 'nix-command flakes' switch --flake .#home 
+	@home-manager --extra-experimental-features 'nix-command flakes' switch --flake .#personal

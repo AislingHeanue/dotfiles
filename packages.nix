@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  homeProfile,
+  personalProfile,
   ...
 }:
 {
@@ -42,7 +42,7 @@
       (config.lib.nixGL.wrap kitty)
     ]
     ++ (
-      if homeProfile then
+      if personalProfile then
         [
           betterdiscordctl
           cargo-nextest
@@ -56,6 +56,10 @@
           (config.lib.nixGL.wrap obs-studio)
         ]
       else
-        [ ]
+        [
+          (config.lib.nixGL.wrap jetbrains.idea-ultimate)
+          (config.lib.nixGL.wrap teams)
+          slack
+        ]
     );
 }
