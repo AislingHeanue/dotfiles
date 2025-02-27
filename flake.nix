@@ -39,12 +39,10 @@
       ...
     }:
     let
-      # lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        # overlays = [ nixgl.overlay ];
       };
       username = "aisling";
       homeDirectory = "/home/aisling";
@@ -58,6 +56,7 @@
             ./home.nix
             ./packages.nix
             ./file.nix
+            # ./plasma.nix
           ];
 
           extraSpecialArgs = {
@@ -75,4 +74,6 @@
 # ./plasma.nix
 # ./panels.nix
 # ./aliases.nix
-# where do i toss work aliases? I guess those don't get put here?
+# github config (dummy)
+# make a better tmux setup
+# whatever else is in my omz folder because that's pretty important

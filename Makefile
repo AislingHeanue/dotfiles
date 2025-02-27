@@ -84,4 +84,5 @@ bootstrap: arch-packages
 	@nix-channel --update
 	@nix-shell '<home-manager>' -A install
 
-	@home-manager --extra-experimental-features 'nix-command flakes' switch --flake .#personal
+	@~/.nix-profile/bin/home-manager --extra-experimental-features 'nix-command flakes' switch --flake .#personal
+	@source ~/.nix-profile/etc/profile.d/hm-session-vars.sh

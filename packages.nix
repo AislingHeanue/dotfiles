@@ -39,7 +39,6 @@
       zoxide
 
       xournalpp
-      (config.lib.nixGL.wrap kitty)
     ]
     ++ (
       if personalProfile then
@@ -50,7 +49,6 @@
           yt-dlp
           z3
 
-          discord
           telegram-desktop
           qbittorrent
           (config.lib.nixGL.wrap obs-studio)
