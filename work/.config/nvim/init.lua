@@ -6,6 +6,7 @@ require("custom.cmd")
 require('lazy').setup(
   {
     'tpope/vim-sleuth',
+    'towolf/vim-helm',
     {
       'Bilal2453/luvit-meta',
       lazy = true

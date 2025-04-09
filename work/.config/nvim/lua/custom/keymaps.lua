@@ -39,3 +39,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 -- Move Ctrl+6 to somewhere less awful for my hands
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = true, desc = 'Edit previous file' })
+
+vim.fn.setreg('s', ']szg')
+

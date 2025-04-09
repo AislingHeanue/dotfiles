@@ -62,3 +62,13 @@ vim.opt.spelllang = 'en_gb'
 vim.opt.spell = true
 vim.opt.spelloptions = 'camel'
 vim.opt.spellcapcheck = ""
+
+vim.filetype.add({
+  extension = {
+    tmpl = "gotmpl",
+  },
+})
+
+vim.diagnostic.config({
+  virtual_text = true
+})

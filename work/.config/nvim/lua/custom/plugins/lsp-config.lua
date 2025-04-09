@@ -11,6 +11,14 @@ return {
     { 'j-hui/fidget.nvim',       opts = {} },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
+    {
+      'artemave/workspace-diagnostics.nvim',
+      keys = {
+        { '<leader>l', function() require('workspace-diagnostics').populate_workspace_diagnostics() end, desc = 'Lint Workspace', mode = 'n' }
+      }
+
+    },
+    'nvim-java/nvim-java'
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -105,6 +113,35 @@ return {
         end
       end,
     })
+
+    -- local function listJarFiles(dir)
+    --   local files = {}
+    --
+    --   local function scan(directory)
+    --     local handle = vim.uv.fs_scandir(directory)
+    --     if not handle then
+    --       return
+    --     end
+    --
+    --     while true do
+    --       local name, type = vim.uv.fs_scandir_next(handle)
+    --       if not name then
+    --         break
+    --       end
+    --
+    --       local fullPath = directory .. '/' .. name
+    --       if type == 'directory' then
+    --         scan(fullPath)
+    --       elseif name:match '%.jar$' then
+    --         table.insert(files, fullPath)
+    --       end
+    --     end
+    --   end
+    --
+    --   scan(dir)
+    --   return files
+    -- end
+
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -125,12 +162,36 @@ return {
       pyright = {},
       docker_compose_language_service = {},
       dockerls = {},
-      golangci_lint_ls = {},
+      golangci_lint_ls = {
+        -- capabilities = {
+        --   workspaceDiagnostics = true
+        -- },
+        -- init_options = {
+        --   command = {
+        --     "sh",
+        --     "-c",
+        --     "golangci-lint run ./... --out-format json"
+        --   },
+        -- }
+      },
+      golines = {},
+      groovyls = {
+        -- settings = {
+        --   groovy = {
+        --     classpath = {
+        --       "/home/aisling/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/7.0.0-M1/aeebfff3082ed8928f5cf360ea425aed8f79407c/grails-web-common-7.0.0-M1.jar"
+        --     }
+        --     -- listJarFiles(os.getenv 'HOME' .. '/.gradle/caches/modules-2/files-2.1'),
+        --   },
+        -- }
+        -- -- cmd = { "java", "-jar", "~/dev/GroovyLanguageServer/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+      },
       helm_ls = {},
       sqlls = {},
       terraformls = {},
-      bzl = {},      -- starlark
+      bzl = {}, -- starlark
       jqls = {},
+      jdtls = {},
       marksman = {}, -- markdown
       yamlls = {},
       jsonls = {},
@@ -189,5 +250,31 @@ return {
         end,
       },
     }
-  end,
+    -- require('lspconfig').golangci_lint_ls.setup({
+    --   on_attach = function(client, bufnr)
+    --     require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+    --   end
+    -- })
+    --
+
+    --   require('lspconfig').groovyls.setup {
+    --     -- Unix
+    --     cmd = { "java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "/home/aisling/dev/GroovyLanguageServer/groovy-language-server/build/libs/groovy-language-server-all.jar" },
+    --     languages = { "groovy", "gson" }
+    --     -- cmd_env = {
+    --     --   JAVA_OPTS = "-agentlib:jdwp=transport=dt_socket,address=5005"
+    --     -- },
+    --     root_dir = function(fname)
+    --       return "/home/aisling/dev/hpe-cds/central-services-poc"
+    --     end,
+    --     settings = {
+    --       groovy = {
+    --         classpath = {
+    --           "/home/aisling/.sdkman/candidates/groovy/4.0.24/lib/**",
+    --           "/home/aisling/.gradle/caches/modules-2/files-2.1/**"
+    --         }
+    --       }
+    --     },
+    --   }
+  end
 }
