@@ -1,17 +1,70 @@
 #!/bin/bash
 
-# TODO: okay new plan, strike these packages off the list if they are present in yay -Qe
-# Hopefully that isn't the worst thing ever
-echo "Installing packages"
-sudo pacman -Sy --needed {{ .packages.pacman.system | join " " }}
-sudo pacman -Sy --needed {{ .packages.pacman.plasma | join " " }}
-sudo pacman -Sy --needed {{ .packages.pacman.common | join " " }}
-yay -Sy --needed {{ .packages.yay.common | join " " }}
 
-{{ if eq .chezmoi.hostname "aislingArch" }}
-sudo pacman -Sy --needed {{ .packages.pacman.home | join " " }}
-yay -Sy --needed {{ .packages.yay.home | join " " }}
-{{ else if eq .chezmoi.hostname "HPE-AislingArch" }}
-sudo pacman -Sy --needed {{ .packages.pacman.work | join " " }}
-yay -Sy --needed {{ .packages.yay.work | join " " }}
-{{ end }}
+echo "Installing packages"
+yay -Syu
+
+{{ $root := . }}
+
+{{ range $packagePointer := list .packages.pacman .packages.yay }}
+	{{ $declaredPackages := list }}
+	{{ $declaredListSources := list .common .system .plasma .install .ignore }}
+	{{ if eq $root.chezmoi.hostname "HPE-AislingArch" }}
+		{{ $declaredListSources = append $declaredListSources .work }}	
+	{{ else }}
+		{{ $declaredListSources = append $declaredListSources .home }}
+	{{ end}}
+
+
+	{{ range $l := $declaredListSources }}
+		{{ if ne $l nil }}
+			{{ $declaredPackages = concat $declaredPackages $l}}
+		{{ end }}
+	{{ end}}
+
+	{{ $toRemove := list }}
+	{{ $toAdd := list}}
+
+	{{ range $item2 := .installed }}
+	    {{ $found := false }}
+	    {{ range $item1 := $declaredPackages }}
+	        {{ if eq $item2 $item1 }}
+	            {{ $found = true }}
+	            {{ break }}
+	        {{ end }}
+	    {{ end }}
+	    {{ if not $found }}
+	        {{ $toRemove = append $toRemove $item2 }}
+	    {{ end }}
+	{{ end }}
+
+	{{ range $item2 := $declaredPackages }}
+	    {{ $found := false }}
+	    {{ range $item1 := $packagePointer.installed }}
+	        {{ if eq $item2 $item1 }}
+	            {{ $found = true }}
+	            {{ break }}
+	        {{ end }}
+	    {{ end }}
+	    {{ if not $found }}
+	        {{ $toAdd = append $toAdd $item2 }}
+	    {{ end }}
+	{{ end }}
+
+	{{ if ne (len $toAdd) 0 }}
+	echo Adding {{ $toAdd | join " " }}
+	{{ .executable }} -Sy --needed {{ $toAdd | join " "}}
+	{{ .executable }} -D --asexplicit {{ $toAdd | join " "}}
+	{{ else }}
+	echo No packages to add.
+	{{ end }}
+	{{ if ne (len $toRemove) 0 }}
+	echo Removing {{ $toAdd | join " " }}
+	{{ .executable }} -D --asdeps {{ $toRemove | join " " }}
+	{{ else }}
+	echo No packages to remove.
+	{{ end }}
+{{ end}}
+
+# Clean up packages that have been marked as dependencies
+yay -Yc

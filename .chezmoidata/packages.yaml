@@ -1,5 +1,6 @@
 packages:
   pacman:
+    executable: "sudo pacman"
     # Do not ever remove these entries
     system:
       - base
@@ -7,14 +8,15 @@ packages:
       - grub
       - libva-intel-driver
       - linux
-      - linux-headers
       - linux-firmware
+      - linux-headers
       - networkmanager
       - ntfs-3g
       - nvidia
       - nvidia-prime
       - nvidia-settings
       - os-prober
+      - pipewire
       - pipewire-alsa
       - pipewire-pulse
       - sddm
@@ -24,6 +26,7 @@ packages:
       - wayland
       - xf86-input-synaptics
       - xorg-xwayland
+      - yt-dlp
       - zsh
     # Desktop environment specific entries
     plasma:
@@ -36,19 +39,25 @@ packages:
       - kate
       - kcolorchooser
       - kde-system-meta
+      - kdegraphics-thumbnailers
+      - kdialog
       - kolourpaint
       - konsole
+      - kwalletmanager
       - okular
+      - plasma-desktop
       - plasma-meta
-      - spectacle
-    # Entries for installed programs that are not critical
+    # Entries for installed programs that are not critical.
     common:
       - appmenu-gtk-module
       - atuin
       - bat
+      - bluez-utils
       - btop
+      - chezmoi
       - chromium
       - cmatrix
+      - delve
       - docker
       - docker-compose
       - eza
@@ -56,50 +65,80 @@ packages:
       - fzf
       - git
       - github-cli
+      - go
       - gparted
       - grub-customizer
       - ipython
-      - less
+      - jellyfin-ffmpeg
+      - kitty
+      - lazygit
+      - libappindicator-gtk3
       - luarocks
-      - make
       - man-db
+      - man-pages
       - markdownlint
+      - markdownlint-cli
       - neofetch
+      - neovim
       - noto-fonts-cjk
       - noto-fonts-emoji
+      - obs-studio
+      - openssh
       - python
       - python-matplotlib
       - python-pip
+      - python-pipx
       - python-pynvim
       - python-setuptools
+      - ripgrep
       - strace
+      - rustup #hi
       - tailscale
       - timeshift
-      - tldr
+      - tinygo
       - tmux
       - tree
       - ttf-dejavu-nerd
       - unzip
       - wget
+      - wl-clipboard
+      - xclip
+      - xdg-desktop-portal-gtk
       - xournalpp
+      - xsel
       - yq
       - zoxide
     home:
       - cargo-nextest
-      - obs-studio
+      - discord
       - qbittorrent
       - rustup
       - steam
       - yt-dlp
       - z3
     work:
+      - ccid
+      - docker-buildx
+      - intel-media-driver
+      - intel-ucode
+      - libb64
+      - meld
+      - yarn
   yay:
+    executable: "yay"
     common:
-      - yay-bin
+      - downgrade
       - golangci-lint
+      - mkinitcpio-firmware
       - nodejs-jsonlint
+      - yay-bin
+      - zoom
+    system:
+    plasma:
     home:
       - betterdiscordctl
     work:
-     - teams-for-linux
-     - visual-studio-code-bin
+      - outlook-for-linux-bin
+      - slack-desktop
+      - teams-for-linux
+      - visual-studio-code-bin

@@ -1,5 +1,5 @@
 alias please='sudo $(history -p !!)'
-alias aliases='vi ~/.local/share/chezmoi/.oh-my-zsh/custom/aliases.zsh && chezmoi apply && reload'
+alias aliases='vi ~/.local/share/chezmoi/dot_zsh-aliases.zsh && chezmoi apply && reload'
 alias reload='. ~/.zshrc'
 alias zeload='reload'
 alias gateway="ip route show 0.0.0.0/0 dev wlp0s20f3 | cut -d\  -f3"
@@ -16,3 +16,7 @@ alias cat="bat --theme \"Visual Studio Dark+\""
 alias show="bat --style plain --theme \"Visual Studio Dark+\""
 alias ls="exa --icons --sort name"
 alias tm="~/scripts/tmux.sh $@"
+alias pkg="vi ~/.local/share/chezmoi/.chezmoidata/packages.yaml && chezmoi apply"
+alias pkg2="vi ~/.config/chezmoi/chezmoi.yaml && chezmoi apply"
+alias apply="chezmoi apply; chezmoi apply"
+

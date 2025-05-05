@@ -70,3 +70,5 @@ ZSH_THEME_GIT_PROMPT_DIRTY="*"
 # Preferred editor for local and remote sessions
 export VISUAL='nvim'
 export EDITOR='nvim'
+
+source ~/.zsh-aliases.zsh
