@@ -47,4 +47,4 @@ end)
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = true, desc = 'Edit previous file' })
 
 vim.fn.setreg('s', ']szg')
-
+vim.fn.setreg('d', '1000@s')
