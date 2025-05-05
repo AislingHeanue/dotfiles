@@ -1,0 +1,46 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+shift+a",
+        "command": "go.lint.workspace"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.reloadWindow",
+        "when": "isLinux"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "alt+enter",
+        "command": "git.commitEmpty",
+        "when": "isLinux"
+    },
+    {
+        "key": "ctrl+shift+alt+r",
+        "command": "remote-containers.settings",
+        "when": "true"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "remote-containers.rebuildContainer",
+        "when": "true"
+    },
+    {
+        "key": "alt+x",
+        "command": "toggleVim",
+        "when": "true"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    }
+]

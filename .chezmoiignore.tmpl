@@ -1,0 +1,15 @@
+work
+*.nix
+flake.lock
+Makefile
+README.md
+.oh-my-zsh/custom/*.zsh
+.oh-my-zsh/cache
+.config/nvim/spell
+
+{{ if eq .chezmoi.hostname "HPE-AislingArch" }}
+.gitconfig
+Pictures
+Documents
+Downloads
+{{ end }}

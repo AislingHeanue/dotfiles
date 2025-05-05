@@ -1,0 +1,105 @@
+packages:
+  pacman:
+    # Do not ever remove these entries
+    system:
+      - base
+      - base-devel
+      - grub
+      - libva-intel-driver
+      - linux
+      - linux-headers
+      - linux-firmware
+      - networkmanager
+      - ntfs-3g
+      - nvidia
+      - nvidia-prime
+      - nvidia-settings
+      - os-prober
+      - pipewire-alsa
+      - pipewire-pulse
+      - sddm
+      - sudo
+      - vim
+      - wacomtablet
+      - wayland
+      - xf86-input-synaptics
+      - xorg-xwayland
+      - zsh
+    # Desktop environment specific entries
+    plasma:
+      - ark
+      - filelight
+      - gwenview
+      - hunspell
+      - hunspell-en_gb
+      - kamoso
+      - kate
+      - kcolorchooser
+      - kde-system-meta
+      - kolourpaint
+      - konsole
+      - okular
+      - plasma-meta
+      - spectacle
+    # Entries for installed programs that are not critical
+    common:
+      - appmenu-gtk-module
+      - atuin
+      - bat
+      - btop
+      - chromium
+      - cmatrix
+      - docker
+      - docker-compose
+      - eza
+      - fd
+      - fzf
+      - git
+      - github-cli
+      - gparted
+      - grub-customizer
+      - ipython
+      - less
+      - luarocks
+      - make
+      - man-db
+      - markdownlint
+      - neofetch
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - python
+      - python-matplotlib
+      - python-pip
+      - python-pynvim
+      - python-setuptools
+      - strace
+      - tailscale
+      - timeshift
+      - tldr
+      - tmux
+      - tree
+      - ttf-dejavu-nerd
+      - unzip
+      - wget
+      - xournalpp
+      - yq
+      - zoxide
+    home:
+      - cargo-nextest
+      - obs-studio
+      - qbittorrent
+      - rustup
+      - steam
+      - yt-dlp
+      - z3
+    work:
+  yay:
+    common:
+      - yay-bin
+      - golangci-lint
+      - nodejs-jsonlint
+    home:
+      - betterdiscordctl
+    work:
+     - teams-for-linux
+     - visual-studio-code-bin

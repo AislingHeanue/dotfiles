@@ -1,0 +1,24 @@
+#!/usr/bin/zsh
+
+{{ $directory := "" }}
+{{- if eq .chezmoi.hostname "aislingArch" }}
+{{- $directory = "/mnt/d/Documents/Coding/github" }}
+{{- else }}
+{{- $directory = printf "%s/dev" .chezmoi.homeDir }}
+{{- end -}}
+# Open the session based on the directory specified. Must be a sub-directory of ~/dev
+NAME_IN=$1
+NAME=${${NAME_IN}/\./_}
+
+# Check if the session exists, otherwise create it
+tmux has-session -t "$NAME" &> /dev/null
+
+if [ $? != 0 ]
+then
+    tmux new-session -s "$NAME" -n nvim -d -c "{{ $directory }}/$NAME_IN"
+    tmux new-window -t "$NAME:2" -n "$NAME_IN" -c "{{ $directory }}/$NAME_IN"
+    tmux new-window -t "$NAME:3" -n ~ -c "{{ .chezmoi.homeDir }}"
+    tmux send-keys -t "$NAME:1" "vi ." Enter
+fi
+
+tmux attach -t "$NAME:1"

@@ -1,0 +1,45 @@
+{{ if eq .chezmoi.hostname "aislingArch" }}
+background_image {{ .chezmoi.homeDir }}/.config/kitty/hacknet.jpg
+background_tint 0.8
+{{ else }}
+background_image {{ .chezmoi.homeDir }}/.config/kitty/hacknet3.jpg
+background_tint 0.98
+{{ end }}
+background_image_layout cscaled
+background_image_linear yes
+
+initial_window_height   600
+initial_window_width    860
+remember_window_size    false
+enable_audio_bell       no
+
+confirm_os_window_close 0
+
+tab_bar_edge            top
+tab_bar_style           custom
+
+font_size 11.0
+disable_ligatures always
+
+editor /usr/bin/nvim
+
+#map ctrl+left resize_window narrower
+#map ctrl+right resize_window wider
+#map ctrl+up resize_window taller
+#map ctrl+down resize_window shorter 3
+## reset all windows in the tab to default sizes
+#map ctrl+home resize_window reset
+#map super+t new_tab
+#mouse_map b5 press grabbed,ungrabbed next_tab
+#mouse_map b4 press grabbed,ungrabbed previous_tab
+#map super+e next_layout
+#map super+w close_window
+#map super+d new_window
+#map f1 load_config_file
+
+# BEGIN_KITTY_FONTS
+font_family      family='NotoSansM Nerd Font Mono' style=Light
+bold_font        auto
+italic_font      family='NotoSansM Nerd Font Mono' style=Light
+bold_italic_font auto
+# END_KITTY_FONTS

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# TODO: okay new plan, strike these packages off the list if they are present in yay -Qe
+# Hopefully that isn't the worst thing ever
+echo "Installing packages"
+sudo pacman -Sy --needed {{ .packages.pacman.system | join " " }}
+sudo pacman -Sy --needed {{ .packages.pacman.plasma | join " " }}
+sudo pacman -Sy --needed {{ .packages.pacman.common | join " " }}
+yay -Sy --needed {{ .packages.yay.common | join " " }}
+
+{{ if eq .chezmoi.hostname "aislingArch" }}
+sudo pacman -Sy --needed {{ .packages.pacman.home | join " " }}
+yay -Sy --needed {{ .packages.yay.home | join " " }}
+{{ else if eq .chezmoi.hostname "HPE-AislingArch" }}
+sudo pacman -Sy --needed {{ .packages.pacman.work | join " " }}
+yay -Sy --needed {{ .packages.yay.work | join " " }}
+{{ end }}
