@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Recreating list of packages for chezmoi...
+When = PostTransaction
+Exec = /bin/sh -c '/home/aisling/scripts/update-packages.sh'
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+other=$(pacman -Qem)
+
+original_installed=$(echo -n {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml | sha256sum | cut -d" " -f1)
+
+echo "packages:" > {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+echo "  pacman:" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+echo "    installed:" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+while IFS= read -r line; do
+  cutLine=$(echo $line | cut -d" " -f1)
+  echo "      - $cutLine" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+done < <(pacman -Qen)
+echo "  yay:" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+echo "    installed:" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+while IFS= read -r line; do
+  cutLine=$(echo $line | cut -d" " -f1)
+  echo "      - $cutLine" >> {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml
+done < <(pacman -Qem)
+
+new_installed=$(echo -n {{ .chezmoi.homeDir }}/.local/share/chezmoi/.chezmoidata/installed.yaml | sha256sum | cut -d" " -f1)
+
+if [ $original_installed != $new_installed ]; then
+  echo "WARNING: package list has changed since last apply. Run apply again to sync changes."
+fi

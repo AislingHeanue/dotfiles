@@ -18,5 +18,3 @@ alias ls="exa --icons --sort name"
 alias tm="~/scripts/tmux.sh $@"
 alias pkg="vi ~/.local/share/chezmoi/.chezmoidata/packages.yaml && chezmoi apply"
 alias pkg2="vi ~/.config/chezmoi/chezmoi.yaml && chezmoi apply"
-alias apply="chezmoi apply; chezmoi apply"
-

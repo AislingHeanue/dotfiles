@@ -7,6 +7,7 @@ yay -Syu
 {{ $root := . }}
 
 {{ range $packagePointer := list .packages.pacman .packages.yay }}
+	{{ $declaredAndIgnoredPackages := list }}
 	{{ $declaredPackages := list }}
 	{{ $declaredListSources := list .common .system .plasma .install .ignore }}
 	{{ if eq $root.chezmoi.hostname "HPE-AislingArch" }}
@@ -18,6 +19,13 @@ yay -Syu
 
 	{{ range $l := $declaredListSources }}
 		{{ if ne $l nil }}
+			{{ $declaredAndIgnoredPackages = concat $declaredAndIgnoredPackages $l }}
+		{{ end }}
+	{{ end}}
+
+
+	{{ range $l := (without $declaredListSources .ignore) }}
+		{{ if ne $l nil }}
 			{{ $declaredPackages = concat $declaredPackages $l}}
 		{{ end }}
 	{{ end}}
@@ -27,7 +35,7 @@ yay -Syu
 
 	{{ range $item2 := .installed }}
 	    {{ $found := false }}
-	    {{ range $item1 := $declaredPackages }}
+	    {{ range $item1 := $declaredAndIgnoredPackages }}
 	        {{ if eq $item2 $item1 }}
 	            {{ $found = true }}
 	            {{ break }}
