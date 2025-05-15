@@ -62,7 +62,7 @@ yay -Syu
 	{{ if ne (len $toAdd) 0 }}
 	echo Adding {{ $toAdd | join " " }}
 	{{ .executable }} -Sy --needed {{ $toAdd | join " "}}
-	{{ .executable }} -D --asexplicit {{ $toAdd | join " "}}
+	{{ .executable }} -D --asexplicit {{ $declaredPackages | join " "}}
 	{{ else }}
 	echo No packages to add.
 	{{ end }}
