@@ -34,8 +34,8 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<A-l>', '<C-w>l')
 -- Diagnostics
 vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Show [Q]uick fix list' })
 vim.keymap.set('n', '<leader>es', vim.diagnostic.open_float, { desc = 'Show [E]rror message' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1 }) end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1 }) end)
 -- Use WASM flags for gopls (restart nvim to disable)
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-w>', function()
   vim.env.GOOS = 'js'
@@ -48,3 +48,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = t
 
 vim.fn.setreg('s', ']szg')
 vim.fn.setreg('d', '1000@s')
+
+
+-- Newline mid-line in normal mode
+vim.keymap.set({ 'n', 'v' }, '<C-j>', 'i<CR><Esc>^')
