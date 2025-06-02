@@ -63,6 +63,9 @@ vim.opt.spell = true
 vim.opt.spelloptions = 'camel'
 vim.opt.spellcapcheck = ""
 
+-- Cap the amount of results in completion prompts to 15 displayed at once.
+vim.opt.pumheight = 15
+
 vim.filetype.add({
   extension = {
     tmpl = "gotmpl",
@@ -70,5 +73,8 @@ vim.filetype.add({
 })
 
 vim.diagnostic.config({
-  virtual_text = true
+  virtual_text = true,
+  -- virtual_lines = {
+  --   current_line = true
+  -- }
 })

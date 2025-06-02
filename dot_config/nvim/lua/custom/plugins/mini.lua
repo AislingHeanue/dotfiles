@@ -52,5 +52,16 @@ return { -- Collection of various small independent plugins/modules
     statusline.section_location = function()
       return '%2l:%-2v'
     end
+
+    -- Set the text in the Mode indicator to be black. Also make the background for normal mode more green.
+    -- I really should just switch to lualine.
+    vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { bg = "green", bold = true })
+    for _, mode in ipairs({ "Normal", "Insert", "Visual", "Replace", "Command" }) do
+      local attrs = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineMode' .. mode })
+      ---@diagnostic disable-next-line: assign-type-mismatch
+      attrs.fg = "black"
+      ---@diagnostic disable-next-line: param-type-mismatch
+      vim.api.nvim_set_hl(0, 'MiniStatuslineMode' .. mode, attrs)
+    end
   end
 }

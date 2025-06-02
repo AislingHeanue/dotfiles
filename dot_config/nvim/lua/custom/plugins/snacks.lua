@@ -11,6 +11,8 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    input = { enabled = true },
+    picker = { enabled = true },
     git = { enabled = true },
     quickfile = { enabled = true },
     words = { enabled = true },

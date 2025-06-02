@@ -75,12 +75,19 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 
+local extMap = {
+  ["zsh"] = "bash"
+}
+
 vim.treesitter.query.add_directive(
   "inject-go-tmpl!",
   function(_, _, bufnr, _, metadata)
     local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
     local _, _, ext, _ = string.find(fname, ".*%.(%a+)(%.%a+)")
-    print(ext)
+    if extMap[ext] then
+      -- If it exists, set the ext to be the value in the map
+      ext = extMap[ext]
+    end
     metadata["injection.language"] = ext
   end, {})
 

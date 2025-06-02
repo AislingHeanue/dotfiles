@@ -1,5 +1,5 @@
 alias please='sudo $(history -p !!)'
-alias aliases='vi ~/.local/share/chezmoi/dot_zsh-aliases.zsh && chezmoi apply && reload'
+alias aliases='vi ~/.local/share/chezmoi/dot_zsh-aliases.zsh.tmpl && chezmoi apply && reload'
 alias reload='. ~/.zshrc'
 alias zeload='reload'
 alias gateway="ip route show 0.0.0.0/0 dev wlp0s20f3 | cut -d\  -f3"
@@ -18,3 +18,19 @@ alias ls="exa --icons --sort name"
 alias tm="~/scripts/tmux.sh $@"
 alias pkg="vi ~/.local/share/chezmoi/.chezmoidata/packages.yaml && chezmoi apply"
 alias pkg2="vi ~/.config/chezmoi/chezmoi.yaml && chezmoi apply"
+
+{{ $directory := "" }}
+{{- if eq .chezmoi.hostname "aislingArch" }}
+{{- $directory = "/mnt/d/Documents/Coding/github" }}
+{{- else }}
+{{- $directory = printf "%s/dev" .chezmoi.homeDir }}
+{{- end -}}
+# cd $directory && git clone https://github.com/$@ && cd $@"
+clone () {
+	first=$(echo $@ | rev | cut -d/ -f2 | rev)
+	second=$(echo $@ | rev | cut -d/ -f1 | rev)
+	mkdir -p {{ $directory}}/$first
+	cd {{ $directory }}/$first
+	git clone https://github.com/$@
+	cd $second
+}
