@@ -65,7 +65,7 @@ return {
         map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto Type [D]efinition')
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'List [S]ymbols')
+        map('<leader>dS', require('telescope.builtin').lsp_document_symbols, '[S]ymbols in document')
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')

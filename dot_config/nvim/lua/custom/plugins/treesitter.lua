@@ -36,8 +36,8 @@ return { -- Highlight, edit, and navigate code
         enable = true,
         keymaps = {
           -- Built-in captures.
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
+          -- ["af"] = "@function.outer",
+          -- ["if"] = "@function.inner",
         },
       },
     },

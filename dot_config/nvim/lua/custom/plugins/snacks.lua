@@ -23,7 +23,7 @@ return {
     }
   },
   keys = {
-    { "<leader>dc", function() Snacks.bufdelete() end,               desc = "[C]lose buffer" },
+    { "<leader>q",  function() Snacks.bufdelete() end,               desc = "[Q]uit buffer" },
     { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
     { "<leader>go", function() Snacks.gitbrowse() end,               desc = "[O]pen on remote" },
     { "<leader>gi", function() Snacks.git.blame_line() end,          desc = "View Git Blame [I]nfo" },

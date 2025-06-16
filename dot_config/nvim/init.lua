@@ -1,6 +1,8 @@
 require("custom.options")
 require("custom.keymaps")
 require("custom.cmd")
+require("custom.dump")
+require("custom.popup")
 
 -- Run :Lazy, :Mason and :checkhealth for status things.
 require('lazy').setup(

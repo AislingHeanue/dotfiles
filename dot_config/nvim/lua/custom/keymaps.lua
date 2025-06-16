@@ -47,15 +47,15 @@ end)
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = true, desc = 'Edit previous file' })
 
 -- Toggle virtual line errors
-local virtual_lines = false
-vim.keymap.set({ 'n', 'v' }, '<A-e>', function()
-  if virtual_lines then
-    vim.diagnostic.config({ virtual_lines = false })
-  else
-    vim.diagnostic.config({ virtual_lines = { current_line = true } })
-  end
-  virtual_lines = not virtual_lines
-end, { desc = 'Toggle Virtual Lines' })
+-- local virtual_lines = false
+-- vim.keymap.set({ 'n', 'v' }, '<A-e>', function()
+--   if virtual_lines then
+--     vim.diagnostic.config({ virtual_lines = false })
+--   else
+--     vim.diagnostic.config({ virtual_lines = { current_line = true } })
+--   end
+--   virtual_lines = not virtual_lines
+-- end, { desc = 'Toggle Virtual Lines' })
 
 
 vim.fn.setreg('s', ']szg')
@@ -64,3 +64,6 @@ vim.fn.setreg('d', '1000@s')
 
 -- Newline mid-line in normal mode
 vim.keymap.set({ 'n', 'v' }, '<C-j>', 'i<CR><Esc>^')
+
+vim.keymap.set({ 'n' }, '<leader>d', function() vim.diagnostic.open_float() end,
+  { silent = true, desc = 'Show highlighted [E]rror' })
