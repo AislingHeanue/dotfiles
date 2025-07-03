@@ -6,19 +6,41 @@
 {{- else }}
 {{- $directory = printf "%s/dev" .chezmoi.homeDir }}
 {{- end -}}
-# Open the session based on the directory specified. Must be a sub-directory of ~/dev
-NAME_IN=$1
-NAME=${${NAME_IN}/\./_}
 
-# Check if the session exists, otherwise create it
-tmux has-session -t "$NAME" &> /dev/null
+if [[ $# -eq 1 ]]; then
+    if [[ -d $1 ]]; then
+        # If the specified argument is a valid folder, use it directly
+        folder=$1
+    else
+       # Use zoxide to find the folder matching the specified arguments
+       folder=$(zoxide query $1)
+    fi
 
-if [ $? != 0 ]
-then
-    tmux new-session -s "$NAME" -n nvim -d -c "{{ $directory }}/$NAME_IN"
-    tmux new-window -t "$NAME:2" -n "$NAME_IN" -c "{{ $directory }}/$NAME_IN"
-    tmux new-window -t "$NAME:3" -n ~ -c "{{ .chezmoi.homeDir }}"
-    tmux send-keys -t "$NAME:1" "vi ." Enter
+    # Cut the folder name to only 2 path entries.
+    selected=$(echo $folder | rev | cut -d/ -f1-2 | rev)
+else
+    selected=$(find {{ $directory }} -mindepth 2 -maxdepth 2 | rev | cut -d/ -f1-2 | rev | fzf)
+    folder={{ $directory }}/$selected
 fi
 
-tmux attach -t "$NAME:1"
+if [[ ! -d $folder ]]; then
+    echo "Please select a valid folder."
+    exit 1
+fi
+
+# Open the session based on the directory specified. Must be a sub-directory of ~/dev
+name=$(echo $folder | tr . _)
+
+if ! tmux has-session -t $name 2> /dev/null; then
+    tmux new-session -ds $name -c $selected -n nvim -c $folder
+    tmux new-window -t "$name:2" -n "$selected" -c $folder
+    tmux new-window -t "$name:3" -n ~ -c "{{ .chezmoi.homeDir }}"
+    tmux send-keys -t "$name:1" "vi ." Enter
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach -t $name:1
+else
+    # If inside tmux already, switch clients instead of attaching (otherwise this nests sessions, which is not allowed)
+    tmux switch-client -t $name:1
+fi

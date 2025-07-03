@@ -81,3 +81,5 @@ export VISUAL='nvim'
 export EDITOR='nvim'
 
 source ~/.zsh-aliases.zsh
+
+bindkey -s ^f "~/scripts/tmux.sh\n"

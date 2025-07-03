@@ -34,13 +34,14 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<A-l>', '<C-w>l')
 -- Diagnostics
 vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Show [Q]uick fix list' })
 vim.keymap.set('n', '<leader>es', vim.diagnostic.open_float, { desc = 'Show [E]rror message' })
-vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1 }) end)
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end)
 -- Use WASM flags for gopls (restart nvim to disable)
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-w>', function()
   vim.env.GOOS = 'js'
   vim.env.GOARCH = 'wasm'
-  vim.cmd('LspRestart')
+  vim.cmd('LspRestart gopls')
+  vim.cmd('LspRestart golangci_lint_ls')
 end)
 
 -- Move Ctrl+6 to somewhere less awful for my hands
@@ -66,4 +67,4 @@ vim.fn.setreg('d', '1000@s')
 vim.keymap.set({ 'n', 'v' }, '<C-j>', 'i<CR><Esc>^')
 
 vim.keymap.set({ 'n' }, '<leader>d', function() vim.diagnostic.open_float() end,
-  { silent = true, desc = 'Show highlighted [E]rror' })
+  { silent = true, desc = 'Show highlighted [D]iagnostics' })
