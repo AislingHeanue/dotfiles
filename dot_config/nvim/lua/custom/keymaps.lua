@@ -58,8 +58,12 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<A-i>', '<C-^>', { noremap = true, silent = t
 --   virtual_lines = not virtual_lines
 -- end, { desc = 'Toggle Virtual Lines' })
 
-
-vim.fn.setreg('s', ']szg')
+-- next and previous misspelled word
+vim.keymap.set('n', ']w', ']s', { noremap = true })
+vim.keymap.set('n', '[w', '[s', { noremap = true })
+-- @s to fix the next misspelling
+vim.fn.setreg('s', ']wzg')
+-- @d to fix 1000 misspellings in buffer
 vim.fn.setreg('d', '1000@s')
 
 
@@ -68,3 +72,7 @@ vim.keymap.set({ 'n', 'v' }, '<C-j>', 'i<CR><Esc>^')
 
 vim.keymap.set({ 'n' }, '<leader>d', function() vim.diagnostic.open_float() end,
   { silent = true, desc = 'Show highlighted [D]iagnostics' })
+
+-- Prevent <S-j> from removing newlines in a highlighted region, which catches me when I enter line-selection mode with <S-v>
+vim.keymap.set({ 'v' }, '<S-j>', 'j')
+vim.keymap.set({ 'v' }, '<S-k>', 'k')

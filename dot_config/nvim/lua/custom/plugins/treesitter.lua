@@ -10,7 +10,12 @@ return { -- Highlight, edit, and navigate code
         multiwindow = true,
         multiline_threshold = 1
       }
-    }
+    },
+    { -- Add indentation guides even on blank lines
+      'lukas-reineke/indent-blankline.nvim',
+      main = 'ibl',
+      opts = {},
+    },
   },
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -34,12 +39,20 @@ return { -- Highlight, edit, and navigate code
     textobjects = {
       select = {
         enable = true,
+        lookahead = true,
         keymaps = {
-          -- Built-in captures.
-          -- ["af"] = "@function.outer",
-          -- ["if"] = "@function.inner",
+          ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
         },
       },
+      move = {
+        enable = true,
+        goto_next_end = {
+          ["]s"] = { query = "@local.scope", query_group = "locals", desc = "End of scope" },
+        },
+        goto_previous_start = {
+          ["[s"] = { query = "@local.scope", query_group = "locals", desc = "Start of scope" },
+        }
+      }
     },
-  }
+  },
 }

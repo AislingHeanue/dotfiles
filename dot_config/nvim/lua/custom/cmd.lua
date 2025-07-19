@@ -36,13 +36,13 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- Workspace linting
-vim.api.nvim_create_autocmd("BufWritePost", {
-  callback = function()
-    for _, client in ipairs(vim.lsp.get_clients()) do
-      require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
-    end
-  end
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   callback = function()
+--     for _, client in ipairs(vim.lsp.get_clients()) do
+--       require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+--     end
+--   end
+-- })
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --   pattern = "*.go",
@@ -82,7 +82,17 @@ local extMap = {
 vim.treesitter.query.add_directive(
   "inject-go-tmpl!",
   function(_, _, bufnr, _, metadata)
-    local fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+    if bufnr == nil then
+      return
+    end
+
+    local fname
+    if type(bufnr) == "number" then
+      fname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+    else
+      fname = bufnr
+    end
+
     local _, _, ext, _ = string.find(fname, ".*%.(%a+)(%.%a+)")
     if extMap[ext] then
       -- If it exists, set the ext to be the value in the map

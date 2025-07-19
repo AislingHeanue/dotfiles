@@ -41,11 +41,6 @@ require('lazy').setup(
       dependencies = { 'folke/trouble.nvim' },
       keys = { { '<leader>ts', function() require('spectre').toggle() end, desc = "Toggle [S]pectre", mode = 'n' } }
     },
-    { -- Add indentation guides even on blank lines
-      'lukas-reineke/indent-blankline.nvim',
-      main = 'ibl',
-      opts = {},
-    },
     { import = 'custom.plugins' },
   }
 )

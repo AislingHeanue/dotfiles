@@ -12,24 +12,6 @@ return { -- Collection of various small independent plugins/modules
         use_nvim_treesitter = true
       }
     }
-    -- Use select inside an indented block. Also animates the left
-    -- margin of a block for clarity
-    -- - vii - Select inside indent
-    -- - vai - Select around indent
-    -- - [i  - Go to start of indent
-    -- - ]i  - Go to end of indent
-    -- Note: these settings will likely need to be changed
-    -- on a per-filetype basis
-    require('mini.indentscope').setup {
-      draw = {
-        delay = 0,
-        animation = require('mini.indentscope').gen_animation.none()
-      },
-      options = {
-        -- make it so that the top line of a function refences the indented block below it.
-        try_as_border = true
-      }
-    }
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
