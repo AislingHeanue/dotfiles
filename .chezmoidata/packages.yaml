@@ -56,12 +56,15 @@ packages:
       - btop
       - chezmoi
       - chromium
+      - cloc
       - cmatrix
+      - cups
       - delve
       - docker
       - docker-compose
       - eza
       - fd
+      - figlet
       - fzf
       - git
       - github-cli
@@ -92,6 +95,7 @@ packages:
       - python-setuptools
       - ripgrep
       - strace
+      - sonnet5 # spell checking
       - rustup #hi
       - tailscale
       - timeshift
@@ -110,6 +114,7 @@ packages:
       - zoxide
     home:
       - cargo-nextest
+      - cowsay
       - discord
       - qbittorrent
       - rustup
