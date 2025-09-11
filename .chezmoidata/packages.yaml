@@ -87,6 +87,7 @@ packages:
       - noto-fonts-emoji
       - obs-studio
       - openssh
+      - pre-commit
       - python
       - python-matplotlib
       - python-pip
