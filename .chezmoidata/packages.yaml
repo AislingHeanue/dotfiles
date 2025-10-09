@@ -135,6 +135,9 @@ packages:
     common:
       - downgrade
       - golangci-lint
+      - konsave
+      - kwin-scripts-krohnkite
+      - kwin6-bismuth-decoration-git
       - mkinitcpio-firmware
       - nodejs-jsonlint
       - yay-bin
