@@ -10,7 +10,7 @@ yay -Syu
 	{{ $declaredAndIgnoredPackages := list }}
 	{{ $declaredPackages := list }}
 	{{ $declaredListSources := list .common .system .plasma .install .ignore }}
-	{{ if eq $root.chezmoi.hostname "HPE-AislingArch" }}
+	{{ if eq $root.chezmoi.hostname "Adaptemy-AislingArch" }}
 		{{ $declaredListSources = append $declaredListSources .work }}	
 	{{ else }}
 		{{ $declaredListSources = append $declaredListSources .home }}
