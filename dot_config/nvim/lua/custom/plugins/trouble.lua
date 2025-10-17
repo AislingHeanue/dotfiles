@@ -4,15 +4,15 @@ return {
   cmd = "Trouble",
   keys = {
     {
-      "<leader>et",
+      "<leader>eT`",
       "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "[T]rouble",
+      desc = "[T]rouble (workspace)",
     },
-    --   {
-    --     "<leader>eT",
-    --     "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-    --     desc = "[T]rouble (Current Buffer)",
-    --   },
+    {
+      "<leader>et",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      desc = "[T]rouble (Current Buffer)",
+    },
     --   {
     --     "<leader>es",
     --     "<cmd>Trouble symbols toggle focus=false<cr>",

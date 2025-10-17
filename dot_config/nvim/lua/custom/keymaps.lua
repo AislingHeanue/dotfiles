@@ -65,13 +65,16 @@ vim.keymap.set('n', '[w', '[s', { noremap = true })
 vim.fn.setreg('s', ']wzg')
 -- @d to fix 1000 misspellings in buffer
 vim.fn.setreg('d', '1000@s')
-
+-- @n to preform the last action on the next match
+vim.fn.setreg('n', 'n.')
 
 -- Newline mid-line in normal mode
 vim.keymap.set({ 'n', 'v' }, '<C-j>', 'i<CR><Esc>^')
 
 vim.keymap.set({ 'n' }, '<leader>d', function() vim.diagnostic.open_float() end,
   { silent = true, desc = 'Show highlighted [D]iagnostics' })
+-- <leader>p to paste without moving cursor
+vim.keymap.set({ 'n' }, '<leader>p', 'p`[h')
 
 -- Prevent <S-j> from removing newlines in a highlighted region, which catches me when I enter line-selection mode with <S-v>
 vim.keymap.set({ 'v' }, '<S-j>', 'j')
