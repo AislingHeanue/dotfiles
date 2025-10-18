@@ -62,6 +62,10 @@ yay -Syu
 	{{ if ne (len $toAdd) 0 }}
 	echo Adding {{ $toAdd | join " " }}
 	{{ .executable }} -Sy --needed {{ $toAdd | join " "}}
+	if [ "$?" -ne 0 ]; then
+		echo "UTTER FAILURE ENCOUNTERED. RUN 'yay' to fix the packages manually before re-running apply"
+		exit 1
+	fi
 	{{ .executable }} -D --asexplicit {{ $declaredPackages | join " "}}
 	{{ else }}
 	echo No packages to add.

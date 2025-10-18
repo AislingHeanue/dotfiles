@@ -69,6 +69,7 @@ packages:
       - git
       - github-cli
       - go
+      - golangci-lint
       - gparted
       - ipython
       - jellyfin-ffmpeg
@@ -134,7 +135,6 @@ packages:
     executable: "yay"
     common:
       - downgrade
-      - golangci-lint
       - konsave
       - kwin-scripts-krohnkite
       - kwin6-bismuth-decoration-git
