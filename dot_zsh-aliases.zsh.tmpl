@@ -9,7 +9,7 @@ alias la='ls -la'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias hacknet='TERM=xterm prime-run /mnt/d/Games/Linux/steamapps/common/Hacknet/Hacknet'
-alias cube="nohup ~/.jdks/corretto-1.8.0_362/bin/java -Dprism.forceGPU=true -jar ~/Documents/Coding/github/Projects/Rubiks\ Cube/Rubiks\ Cube.jar > /dev/null 2>&1 &"
+alias cube="nohup ~/.jdks/corretto-1.8.0_362/bin/java -Dprism.forceGPU=true -jar ~/dev/AislingHeanue/Projects/Rubiks\ Cube/Rubiks\ Cube.jar > /dev/null 2>&1 &"
 # alias jelly="sudo systemctl restart jellyfin; sudo systemctl start tailscaled;sudo tailscale up;sudo tailscale funnel --bg 8096"
 alias download="yt-dlp --config-location ./ytconf https://www.youtube.com/playlist?list=PLH2ZMngV5dj57mSZfGk-Iz4BY93tKIk61"
 alias cat="bat --theme \"Visual Studio Dark+\""
@@ -19,12 +19,7 @@ alias tm="~/scripts/tmux.sh $@"
 alias pkg="vi ~/.local/share/chezmoi/.chezmoidata/packages.yaml && chezmoi apply"
 alias pkg2="vi ~/.config/chezmoi/chezmoi.yaml && chezmoi apply"
 
-{{ $directory := "" }}
-{{- if eq .chezmoi.hostname "aislingArch" }}
-{{- $directory = "/mnt/d/Documents/Coding/github" }}
-{{- else }}
-{{- $directory = printf "%s/dev" .chezmoi.homeDir }}
-{{- end -}}
+{{- $directory := printf "%s/dev" .chezmoi.homeDir }}
 # cd $directory && git clone https://github.com/$@ && cd $@"
 clone () {
 	first=$(echo $@ | rev | cut -d/ -f2 | rev)
