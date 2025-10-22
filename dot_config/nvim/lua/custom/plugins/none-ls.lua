@@ -1,0 +1,21 @@
+return {
+  -- "nvimtools/none-ls.nvim",
+  -- ft = { "go", "gomod" },
+  -- dependencies = {
+  --   "nvim-lua/plenary.nvim",
+  -- },
+  -- lazy = true,
+  -- config = function()
+  --   local null_ls = require("null-ls")
+  --
+  --   null_ls.setup({
+  --     sources = {
+  --       null_ls.builtins.diagnostics.golangci_lint.with({
+  --         command = "golangci-lint",
+  --         args = { "run", "--output.json.path", "stdout", "--show-stats=false" },
+  --         extra_filetypes = { "go", "gomod", "gotmpl" },
+  --       })
+  --     }
+  --   })
+  -- end
+}
