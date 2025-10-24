@@ -3,6 +3,9 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
   opts = {
     -- don't explode with big files
     bigfile = { enabled = true },

@@ -103,6 +103,7 @@ packages:
       - tmux
       - tree
       - ttf-dejavu-nerd
+      - signal-desktop
       - unzip
       - wget
       - wl-clipboard
