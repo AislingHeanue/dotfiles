@@ -69,7 +69,6 @@ packages:
       - git
       - github-cli
       - go
-      - golangci-lint
       - gparted
       - ipython
       - jellyfin-ffmpeg
@@ -85,6 +84,7 @@ packages:
       - noto-fonts-cjk
       - noto-fonts-emoji
       - obs-studio
+      - obsidian
       - openssh
       - pre-commit
       - python
@@ -101,6 +101,7 @@ packages:
       - timeshift
       - tinygo
       - tmux
+      - trash-cli # obsidian uses this
       - tree
       - ttf-dejavu-nerd
       - signal-desktop
@@ -118,6 +119,7 @@ packages:
       - cargo-nextest
       - cowsay
       - discord
+      - golangci-lint
       - grub
       - qbittorrent
       - rustup
@@ -125,12 +127,16 @@ packages:
       - yt-dlp
       - z3
     work:
-      - ccid
-      - docker-buildx
+      - composer
       - intel-media-driver
       - intel-ucode
       - libb64
       - meld
+      - nvm
+      - sof-firmware
+      - php
+      - php-pgsql
+      - postgresql
       - yarn
   yay:
     executable: "yay"
@@ -148,7 +154,8 @@ packages:
     home:
       - betterdiscordctl
     work:
+      - aws-sam-cli-bin
+      - beekeeper-studio-bin
       - outlook-for-linux-bin
       - slack-desktop
-      - teams-for-linux
       - visual-studio-code-bin

@@ -8,7 +8,7 @@ DISABLE_AUTO_UPDATE=true
 # HYPHEN_INSENSITIVE="true"
 
 
-# Process the dircolors from the home dir to make folders look less terrbible
+# Process the dircolors from the home dir to make folders look less terrible
 if [[ ! -z "${HOME}/.dircolors" ]]; then
   eval `dircolors ${HOME}/.dircolors`
 else
@@ -83,3 +83,9 @@ export EDITOR='nvim'
 source ~/.zsh-aliases.zsh
 
 bindkey -s ^f "~/scripts/tmux.sh\n"
+
+{{ if eq .chezmoi.hostname "Adaptemy-AislingArch" }}
+if [[ -f "/usr/share/nvm/init-nvm.sh" ]]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+{{ end }}

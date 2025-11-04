@@ -14,7 +14,7 @@ if [[ $# -eq 1 ]]; then
     selected=$(echo $folder | rev | cut -d/ -f1-2 | rev)
 else
     selected=$(find {{ $directory }} -mindepth 2 -maxdepth 2 | rev | cut -d/ -f1-2 | rev | fzf)
-    folder={{ $directory }}/$selected
+    folder=$(realpath {{ $directory }}/$selected)
 fi
 
 if [[ ! -d $folder ]]; then

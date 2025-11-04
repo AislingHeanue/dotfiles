@@ -114,6 +114,7 @@ return {
           -- git_status_open = true,
           auto_close = true,
           hidden = true,
+          ignored = true,
           layout = {
             layout = {
               width = 32,
