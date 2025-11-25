@@ -86,6 +86,7 @@ packages:
       - obs-studio
       - obsidian
       - openssh
+      - pnpm
       - pre-commit
       - python
       - python-matplotlib

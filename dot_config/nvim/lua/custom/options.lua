@@ -66,6 +66,9 @@ vim.opt.spellcapcheck = ""
 -- Cap the amount of results in completion prompts to 15 displayed at once.
 vim.opt.pumheight = 15
 
+-- Needed for obsidian
+vim.opt.conceallevel = 1
+
 vim.filetype.add({
   extension = {
     tmpl = "gotmpl",
