@@ -143,6 +143,7 @@ packages:
     executable: "yay"
     common:
       - downgrade
+      - input-remapper-bin
       - konsave
       - kwin-scripts-krohnkite
       - kwin6-bismuth-decoration-git
