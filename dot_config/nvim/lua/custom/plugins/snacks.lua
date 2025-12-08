@@ -126,6 +126,9 @@ return {
         },
         grep = {
           hidden = true,
+          exclude = {
+            "documentation"
+          }
         }
       }
     },
@@ -146,16 +149,16 @@ return {
   },
   keys = {
     -- open dashboard
-    {
-      "<leader>w",
-      function()
-        if vim.api.nvim_buf_get_name(0) == "" then
-          return
-        end
-        Snacks.dashboard()
-      end,
-      desc = "Open Dashboard"
-    },
+    -- {
+    --   "<leader>w",
+    --   function()
+    --     if vim.api.nvim_buf_get_name(0) == "" then
+    --       return
+    --     end
+    --     Snacks.dashboard()
+    --   end,
+    --   desc = "Open Dashboard"
+    -- },
 
     -- close current buffer
     { "<leader>q",        function() Snacks.bufdelete() end,               desc = "[Q]uit buffer" },

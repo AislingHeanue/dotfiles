@@ -1,0 +1,104 @@
+return {
+  -- "nvim-neotest/neotest",
+  -- dependencies = {
+  --   "nvim-neotest/nvim-nio",
+  --   "nvim-lua/plenary.nvim",
+  --   -- "antoinemadec/FixCursorHold.nvim",
+  --   "nvim-treesitter/nvim-treesitter",
+  --   -- "twio142/neotest-mocha",
+  --   "nvim-neotest/neotest-vim-test",
+  --   "vim-test/vim-test",
+  -- },
+  -- opts = {
+  --   adapters = {
+  --     ["neotest-vim-test"] = { allow_file_types = { "javascript", "typescript" } }
+  --   }
+  -- },
+  -- opts = {
+  --   adapters = {
+  --     ["neotest-mocha"] = {
+  --       log_level = vim.log.levels.DEBUG,
+  --       command = "npx mocha --",
+  --       command_args = function(context)
+  --         -- The context contains:
+  --         --   results_path: The file that json results are written to
+  --         --   test_name_pattern: The generated pattern for the test
+  --         --   path: The path to the test file
+  --         --
+  --         -- It should return a string array of arguments
+  --         --
+  --         -- Not specifying 'command_args' will use the defaults below
+  --         -- local relative_path = vim.fn.fnamemodify(context.path, ":.")
+  --         return {
+  --           "--full-trace",
+  --           "--reporter=json",
+  --           "--reporter-options=output=" .. context.results_path,
+  --           "--grep=" .. context.test_name_pattern,
+  --           context.path,
+  --         }
+  --       end,
+  --       env = { CI = true },
+  --       cwd = function()
+  --         return vim.fn.getcwd()
+  --       end,
+  --       discover_files = function(path)
+  --         return vim.fn.globpath(path, "**/*.spec.js", false, true) -- adjust as needed
+  --       end,
+  --     },
+  --   },
+  --   --    consumers = {
+  --   --      overseer = require("neotest.consumers.overseer"),
+  --   --    },
+  --   -- config = function(_, opts)
+  --   --   local neotest_ns = vim.api.nvim_create_namespace("neotest")
+  --   --   vim.diagnostic.config({
+  --   --     virtual_text = {
+  --   --       format = function(diagnostic)
+  --   --         -- Replace newline and tab characters with space for more compact diagnostics
+  --   --         local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+  --   --         return message
+  --   --       end,
+  --   --     },
+  --   --   }, neotest_ns)
+  --   --
+  --   --   if opts.adapters then
+  --   --     local adapters = {}
+  --   --     for name, config in pairs(opts.adapters or {}) do
+  --   --       if type(name) == "number" then
+  --   --         if type(config) == "string" then
+  --   --           config = require(config)
+  --   --         end
+  --   --         adapters[#adapters + 1] = config
+  --   --       elseif config ~= false then
+  --   --         local adapter = require(name)
+  --   --         if type(config) == "table" and not vim.tbl_isempty(config) then
+  --   --           local meta = getmetatable(adapter)
+  --   --           if adapter.setup then
+  --   --             adapter.setup(config)
+  --   --           elseif adapter.adapter then
+  --   --             adapter.adapter(config)
+  --   --             adapter = adapter.adapter
+  --   --           elseif meta and meta.__call then
+  --   --             adapter = adapter(config)
+  --   --           else
+  --   --             error("Adapter " .. name .. " does not support setup")
+  --   --           end
+  --   --         end
+  --   --         adapters[#adapters + 1] = adapter
+  --   --       end
+  --   --     end
+  --   --     opts.adapters = adapters
+  --   --   end
+  --   --   require("neotest").setup(opts)
+  --   -- end,
+  -- },
+  -- keys = {
+  --   { "<leader>ur", function() require("neotest").run.run() end,                                    desc = "Run nearest test" },
+  --   { "<leader>ud", function() require("neotest").run.run({ strategy = "dap", suite = false }) end, desc = "Debug nearest test" },
+  --   { "<leader>uf", function() require("neotest").run.run(vim.fn.expand("%")) end,                  desc = "Run file tests" },
+  --   { "<leader>us", function() require("neotest").summary.toggle() end,                             desc = "Toggle test summary" },
+  --   { "<leader>uo", function() require("neotest").output.open({ enter = true }) end,                desc = "Open test output" },
+  --   { "<leader>ua", function() require("neotest").run.attach() end,                                 desc = "Attach to nearest test" },
+  --   { "<leader>ux", function() require("neotest").run.stop() end,                                   desc = "Stop running tests" },
+  -- },
+}

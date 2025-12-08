@@ -11,7 +11,7 @@ packages:
       - linux-headers
       - networkmanager
       - ntfs-3g
-      - nvidia
+      - nvidia-open
       - nvidia-prime
       - nvidia-settings
       - os-prober
@@ -71,6 +71,7 @@ packages:
       - go
       - gparted
       - ipython
+      - jujutsu
       - jellyfin-ffmpeg
       - kitty
       - lazygit
@@ -129,6 +130,8 @@ packages:
       - z3
     work:
       - composer
+      - eslint
+      - git-filter-repo
       - intel-media-driver
       - intel-ucode
       - libb64
@@ -138,12 +141,15 @@ packages:
       - php
       - php-pgsql
       - postgresql
+      - prettier
+      - vue-language-server
       - yarn
   yay:
     executable: "yay"
     common:
       - downgrade
       - input-remapper-bin
+      - jjui-bin
       - konsave
       - kwin-scripts-krohnkite
       - kwin6-bismuth-decoration-git
@@ -156,8 +162,28 @@ packages:
     home:
       - betterdiscordctl
     work:
+      - aws-cli-bin
       - aws-sam-cli-bin
+      - awsvpnclient
       - beekeeper-studio-bin
+      - k6
+      - networkmanager-openvpn
+      - openvpn
+      - nodejs-jsonlint
       - outlook-for-linux-bin
+      - opencode
+      - php74
+      - php74-cli
+      - php74-iconv
+      - php74-json
+      - php74-mbstring
+      - php74-openssl
+      - php74-pgsql
+      - php74-phar
+      - php74-ssl
+      - php74-tls
+      - postman-bin
       - slack-desktop
+      - vscode-js-debug-bin
       - visual-studio-code-bin
+      - vtsls

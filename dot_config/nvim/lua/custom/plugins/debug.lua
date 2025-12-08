@@ -9,7 +9,8 @@ return {
       'mrcjkb/rustaceanvim',
       version = '^5', -- Recommended
       lazy = false,   -- This plugin is already lazy
-    }
+    },
+    "mxsdev/nvim-dap-vscode-js"
   },
   opts = {
     listeners = {
@@ -24,6 +25,34 @@ return {
   config = function()
     require('dap-go').setup()
     require('dapui').setup()
+    require("dap-vscode-js").setup({
+      adapters = { 'pwa-node' }, -- which adapters to register in nvim-dap
+    })
+    for _, language in ipairs({ "typescript", "javascript" }) do
+      require("dap").configurations[language] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach",
+          processId = require 'dap.utils'.pick_process,
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Auto Attach",
+          cwd = vim.fn.getcwd(),
+          protocol = "inspector",
+        }
+      }
+    end
     require('nvim-dap-virtual-text').setup {
       display_callback = function(var)
         if #var.value > 15 then
