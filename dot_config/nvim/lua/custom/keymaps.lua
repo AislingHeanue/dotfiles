@@ -5,6 +5,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
+-- Disabled because it adds a lag period to just pressing <Esc> which feels terrible
 -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -30,6 +31,11 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<A-h>', '<C-w>h')
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-j>', '<C-w>j')
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-k>', '<C-w>k')
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-l>', '<C-w>l')
+-- same in terminal mode
+vim.keymap.set({ 't' }, '<A-h>', '<C-\\><C-n><C-w>h')
+vim.keymap.set({ 't' }, '<A-j>', '<C-\\><C-n><C-w>j')
+vim.keymap.set({ 't' }, '<A-k>', '<C-\\><C-n><C-w>k')
+vim.keymap.set({ 't' }, '<A-l>', '<C-\\><C-n><C-w>l')
 
 -- Diagnostics
 vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist, { desc = 'Show [Q]uick fix list' })

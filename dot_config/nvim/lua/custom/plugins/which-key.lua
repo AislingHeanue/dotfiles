@@ -16,7 +16,8 @@ return {              -- Useful plugin to show you pending keybinds.
       { '<leader>t', group = '[T]oggle' },
       { '<leader>g', group = '[G]it',                 mode = { 'n', 'v' } },
       { '<leader>e', group = '[E]rrors (Diagnostics)' },
-      { '<leader>p', group = '[P]ersistence Sessions' }
+      { '<leader>p', group = '[P]ersistence Sessions' },
+      { '<leader>o', group = '[O]pencode' }
     },
   },
   keys = {

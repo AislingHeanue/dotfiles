@@ -124,6 +124,8 @@ return {
     require('mason-lspconfig').setup()
     vim.lsp.config('vtsls', {
       settings = {
+        typescript = { format = { enable = false } },
+        javascript = { format = { enable = false } },
         vtsls = {
           tsserver = {
             globalPlugins = {
