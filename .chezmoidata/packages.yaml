@@ -151,6 +151,7 @@ packages:
     executable: "yay"
     common:
       - downgrade
+      - glow
       - input-remapper-bin
       - jjui-bin
       - konsave
@@ -158,6 +159,7 @@ packages:
       - kwin6-bismuth-decoration-git
       - mkinitcpio-firmware
       - nodejs-jsonlint
+      - opencode
       - yay-bin
       - zoom
     system:
@@ -176,7 +178,6 @@ packages:
       - openvpn
       - nodejs-jsonlint
       - outlook-for-linux-bin
-      - opencode
       - php74
       - php74-cli
       - php74-iconv

@@ -7,7 +7,7 @@ if [[ $# -eq 1 ]]; then
         folder=$(realpath "$1")
     else
        # Use zoxide to find the folder matching the specified arguments
-       folder=$(realpath $(zoxide query "$1"))
+       folder=$(realpath "$(zoxide query "$1")")
     fi
 
     # Cut the folder name to only 2 path entries.
