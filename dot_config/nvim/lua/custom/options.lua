@@ -68,6 +68,14 @@ vim.opt.pumheight = 15
 
 -- Needed for obsidian
 vim.opt.conceallevel = 1
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "json", "jsonc" }, -- Apply to both JSON and JSONC filetypes
+  callback = function()
+    -- Set conceallevel to 0 for JSON files (0 = always show concealed text)
+    vim.opt_local.conceallevel = 0
+  end,
+  desc = "Disable conceal for JSON files",
+})
 
 vim.filetype.add({
   extension = {
