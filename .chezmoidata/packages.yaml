@@ -11,7 +11,6 @@ packages:
       - linux-headers
       - networkmanager
       - ntfs-3g
-      - nvidia-open
       - nvidia-prime
       - nvidia-settings
       - os-prober
@@ -75,7 +74,6 @@ packages:
       - jellyfin-ffmpeg
       - kitty
       - lazygit
-      - libappindicator-gtk3
       - luarocks
       - man-db
       - man-pages
@@ -89,6 +87,7 @@ packages:
       - openssh
       - pnpm
       - pre-commit
+      - prettier
       - python
       - python-matplotlib
       - python-pip
@@ -118,13 +117,17 @@ packages:
       - yt-dlp
       - zoxide
     home:
+      - bun
       - cargo-nextest
       - cowsay
       - discord
       - golangci-lint
       - grub
+      - jdk21-openjdk
+      - prismlauncher
       - qbittorrent
       - rustup
+      - sshfs
       - steam
       - yt-dlp
       - z3
@@ -136,12 +139,12 @@ packages:
       - intel-ucode
       - libb64
       - meld
+      - nvidia-open
       - nvm
       - sof-firmware
       - php
       - php-pgsql
       - postgresql
-      - prettier
       - vue-language-server
       - yarn
   yay:
@@ -160,7 +163,9 @@ packages:
     system:
     plasma:
     home:
+      - arch-update
       - betterdiscordctl
+      - nvidia-580xx-dkms
     work:
       - aws-cli-bin
       - aws-sam-cli-bin
