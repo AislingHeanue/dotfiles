@@ -53,6 +53,7 @@ packages:
       - bat
       - bluez-utils
       - btop
+      - bun
       - chezmoi
       - chromium
       - cloc
@@ -104,8 +105,10 @@ packages:
       - tmux
       - trash-cli # obsidian uses this
       - tree
+      - tree-sitter-cli
       - ttf-dejavu-nerd
       - signal-desktop
+      - sshfs
       - unzip
       - wget
       - wl-clipboard
@@ -117,7 +120,6 @@ packages:
       - yt-dlp
       - zoxide
     home:
-      - bun
       - cargo-nextest
       - cowsay
       - discord
@@ -127,11 +129,12 @@ packages:
       - prismlauncher
       - qbittorrent
       - rustup
-      - sshfs
       - steam
       - yt-dlp
       - z3
     work:
+      # - php
+      # - php-pgsql
       - composer
       - eslint
       - git-filter-repo
@@ -141,10 +144,11 @@ packages:
       - meld
       - nvidia-open
       - nvm
-      - sof-firmware
-      - php
-      - php-pgsql
+      - openai-codex
       - postgresql
+      - sof-firmware
+      - sops
+      - vscode-json-languageserver
       - vue-language-server
       - yarn
   yay:
@@ -173,10 +177,12 @@ packages:
       - aws-sam-cli-bin
       - awsvpnclient
       - beekeeper-studio-bin
+      - claude-code
+      - git-remote-codecommit
       - k6
       - networkmanager-openvpn
-      - openvpn
       - nodejs-jsonlint
+      - openvpn
       - outlook-for-linux-bin
       - php74
       - php74-cli
@@ -190,6 +196,8 @@ packages:
       - php74-tls
       - postman-bin
       - slack-desktop
-      - vscode-js-debug-bin
+      - t3code-bin
+      - teams-for-linux
       - visual-studio-code-bin
+      - vscode-js-debug-bin
       - vtsls

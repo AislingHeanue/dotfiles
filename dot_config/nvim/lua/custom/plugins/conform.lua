@@ -44,11 +44,17 @@ return { -- Autoformat
       go = { "gofumpt" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
       typescript = { "prettierd", "prettier", stop_after_first = true },
-      vue = { "prettierd", "prettier", stop_after_first = true },
+      vue = {
+        stop_after_first = true,
+        lsp_format = "fallback",
+        filter = function(client)
+          return client.name ~= "vtsls" and client.name ~= "vue_ls"
+        end
+      },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       -- You can use 'stop_after_first' to run the first available formatter from the list
-    },
+    }
   },
   -- config = function()
   --   --   require("conform.formatters.prettierd").args = function()

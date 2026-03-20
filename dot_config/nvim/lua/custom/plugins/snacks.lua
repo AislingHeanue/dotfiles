@@ -127,7 +127,11 @@ return {
         grep = {
           hidden = true,
           exclude = {
-            "documentation"
+            "documentation",
+            "*.mocks.js",
+            "*mocks.json",
+            "*.xml",
+            "*.csv"
           }
         }
       }

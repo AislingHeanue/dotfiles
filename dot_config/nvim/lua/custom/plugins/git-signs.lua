@@ -29,7 +29,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
-          require("gitsigns").nav_hunk 'next'
+          require("gitsigns").nav_hunk 'prev'
         end
       end,
       mode = 'n',
@@ -41,7 +41,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
-          require("gitsigns").nav_hunk 'prev'
+          require("gitsigns").nav_hunk 'next'
         end
       end,
       mode = 'n',

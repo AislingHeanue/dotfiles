@@ -69,9 +69,45 @@ source $ZSH/oh-my-zsh.sh
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
+# jj (Jujutsu) prompt support
+jj_prompt_info() {
+  if jj root >/dev/null 2>&1; then
+    local bookmark
+    local color="%{$fg_bold[cyan]%}"
+    
+    # Check if current revision has conflicts
+    if [[ $(jj log -r @ --no-graph -T 'conflict' 2>/dev/null) == "true" ]]; then
+      color="%{$fg_bold[red]%}"
+    fi
+    
+    bookmark=$(jj log -r @ --no-graph -T 'bookmarks.join(", ")' 2>/dev/null | tr -d '\n')
+    
+    if [[ -n "$bookmark" ]]; then
+      echo -n " ${color}($bookmark)%{$reset_color%}"
+    else
+      # Find nearest ancestor with a bookmark
+      local ancestor_bookmark
+      ancestor_bookmark=$(jj log -r 'heads(::@- & bookmarks())' --no-graph -T 'bookmarks.join(", ")' --limit 1 2>/dev/null | tr -d '\n')
+      if [[ -n "$ancestor_bookmark" ]]; then
+        echo -n " ${color}($ancestor_bookmark^)%{$reset_color%}"
+      fi
+    fi
+  fi
+}
+
+# Combined VCS prompt (git or jj)
+vcs_prompt_info() {
+  local jj_info=$(jj_prompt_info)
+  if [[ -n "$jj_info" ]]; then
+    echo -n "$jj_info"
+  else
+    echo -n "$(git_prompt_info)"
+  fi
+}
+
 PROMPT="%(?:%{$fg_bold[magenta]%}%n:%{$fg_bold[red]%}%n)"
-PROMPT+='%{$reset_color%}:%{$fg_bold[blue]%}${$(git_prompt_info):-%~%f}%{$reset_color%}$ '
-ZSH_THEME_GIT_PROMPT_PREFIX="%c %{$fg_bold[cyan]%}("
+PROMPT+='%{$reset_color%}:%{$fg_bold[blue]%}%c%{$reset_color%}$(vcs_prompt_info)$ '
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg_bold[cyan]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="*"
