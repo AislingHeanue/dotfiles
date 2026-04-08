@@ -1,6 +1,21 @@
 return {
   { -- Parser installation and queries
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      { -- Indentation guides on blank lines
+        'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
+        opts = {},
+      },
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = {
+          multiwindow = true,
+          multiline_threshold = 1,
+        },
+      },
+    },
     lazy = false,
     main = 'nvim-treesitter',
     build = ':TSUpdate',
@@ -19,14 +34,6 @@ return {
         end,
       })
     end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {
-      multiwindow = true,
-      multiline_threshold = 1,
-    },
   },
   { -- Textobjects (main branch for new nvim-treesitter)
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -67,10 +74,5 @@ return {
         desc = 'Start of scope'
       },
     },
-  },
-  { -- Indentation guides on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {},
   },
 }
