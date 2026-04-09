@@ -20,6 +20,24 @@ return {
     --
     -- },
     -- 'nvim-java/nvim-java'
+    --
+    {
+      "nemanjamalesija/ts-expand-hover.nvim",
+      ft = { "typescript", "typescriptreact", "vue", "javascript" },
+      opts = {
+        keymaps = {
+          hover    = "<leader>k",
+          expand   = "+",              -- expand type one level (inside float)
+          collapse = "-",              -- collapse type one level (inside float)
+          close    = { "q", "<Esc>" }, -- close float and return to source},
+        },
+        float = {
+          border     = "rounded", -- "rounded", "single", "double", "none"
+          max_width  = 80,
+          max_height = 60,
+        }
+      },
+    }
   },
   config = function()
     -- Brief aside: **What is LSP?**

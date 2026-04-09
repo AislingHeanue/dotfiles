@@ -43,7 +43,7 @@ return {
         {
           pane = 2,
           section = "terminal",
-          cmd = "~/.config/nvim/header.sh $PWD && echo", -- removing "something" here gives a (bad) cached value that I don't know how to destroy.
+          cmd = "~/.config/nvim/header.sh $PWD && echo", -- echo is to suppress "Process exited with status code 0"
           ttl = 0,
           height = 8,
           padding = 2,

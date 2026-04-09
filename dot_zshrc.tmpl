@@ -67,7 +67,14 @@ bindkey -M vicmd e edit-command-line
 source $ZSH/oh-my-zsh.sh
 
 eval "$(atuin init zsh)"
-eval "$(zoxide init zsh --cmd cd)"
+# Override `cd` with zoxide only in genuine interactive shells. Non-interactive
+# shells (scripts, Claude Code's command snapshot) get the plain builtin `cd`,
+# which fails loudly on bad paths instead of silently fuzzy-jumping elsewhere.
+if [[ $- == *i* ]] && [[ -z "$CLAUDECODE" ]]; then
+  eval "$(zoxide init zsh --cmd cd)"
+else
+  eval "$(zoxide init zsh)"
+fi
 
 # jj (Jujutsu) prompt support
 jj_prompt_info() {
