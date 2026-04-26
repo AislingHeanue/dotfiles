@@ -1,5 +1,10 @@
 #!/bin/bash
 
+{{ if eq .chezmoi.hostname "canary" }}
+echo "Skipping docker setup on zoey computer"
+exit 0
+{{ end }}
+
 echo "Adding {{ .chezmoi.username }} to docker group."
 sudo pacman -Sy --needed docker
 sudo usermod -aG docker {{ .chezmoi.username | quote }}

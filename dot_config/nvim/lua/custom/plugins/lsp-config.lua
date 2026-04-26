@@ -104,7 +104,7 @@ return {
       'helm_ls',
       'sqlls',
       'terraformls',
-      'bzl', -- starlark
+      -- 'bzl', -- starlark
       'jqls',
       'jdtls',
       'marksman', -- markdown

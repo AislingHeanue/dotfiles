@@ -1,4 +1,3 @@
-work
 *.nix
 flake.lock
 Makefile
@@ -8,7 +7,7 @@ README.md
 .config/nvim/spell
 extra
 
-{{ if eq .chezmoi.hostname "Adaptemy-AislingArch" }}
+{{ if ne .chezmoi.hostname "aislingArch" }}
 .gitconfig
 Pictures
 Documents

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+{{ if eq .chezmoi.hostname "canary" }}
+echo "Skipping yay install on zoey computer"
+exit 0
+{{ end }}
+
 echo "Installing yay manually."
 if yay --version; then
 	echo "yay already installed"

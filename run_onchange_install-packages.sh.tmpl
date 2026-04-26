@@ -1,17 +1,25 @@
 #!/bin/bash
 
+{{ $hostname := .chezmoi.hostname }}
+{{ if eq $hostname "canary" }}
+echo "Package management disabled for zoey computer"
+exit 0
+{{ end }}
 
 echo "Installing packages"
 yay -Syu
 
 {{ $root := . }}
+{{ $hostname := $root.chezmoi.hostname }}
 
 {{ range $packagePointer := list .packages.pacman .packages.yay }}
 	{{ $declaredAndIgnoredPackages := list }}
 	{{ $declaredPackages := list }}
 	{{ $declaredListSources := list .common .system .plasma .install .ignore }}
-	{{ if eq $root.chezmoi.hostname "Adaptemy-AislingArch" }}
-		{{ $declaredListSources = append $declaredListSources .work }}	
+	{{ if eq $hostname "Adaptemy-AislingArch" }}
+		{{ $declaredListSources = append $declaredListSources .work }}
+	{{ else if or (eq $hostname "AislingArch") (eq $hostname "aislingArch") (eq $hostname "canary") }}
+		{{ $declaredListSources = append $declaredListSources .home }}
 	{{ else }}
 		{{ $declaredListSources = append $declaredListSources .home }}
 	{{ end}}
@@ -33,7 +41,12 @@ yay -Syu
 	{{ $toRemove := list }}
 	{{ $toAdd := list}}
 
-	{{ range $item2 := .installed }}
+	{{ $installed := list }}
+	{{ if hasKey $packagePointer "installed" }}
+		{{ $installed = $packagePointer.installed }}
+	{{ end }}
+
+	{{ range $item2 := $installed }}
 	    {{ $found := false }}
 	    {{ range $item1 := $declaredAndIgnoredPackages }}
 	        {{ if eq $item2 $item1 }}
@@ -48,7 +61,7 @@ yay -Syu
 
 	{{ range $item2 := $declaredPackages }}
 	    {{ $found := false }}
-	    {{ range $item1 := $packagePointer.installed }}
+	    {{ range $item1 := $installed }}
 	        {{ if eq $item2 $item1 }}
 	            {{ $found = true }}
 	            {{ break }}

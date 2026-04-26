@@ -1,4 +1,5 @@
-{{ if eq .chezmoi.hostname "aislingArch" }}
+{{ $hostname := .chezmoi.hostname }}
+{{ if eq $hostname "aislingArch" }}
 background_image {{ .chezmoi.homeDir }}/.config/kitty/hacknet.jpg
 background_tint 0.8
 {{ else }}
