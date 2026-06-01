@@ -1,5 +1,6 @@
 return {
-  'nvim-flutter/flutter-tools.nvim',
+  'hoangnx2204/flutter-tools.nvim',
+  branch = 'feature/menu-for-snack-picker',
   lazy = false,
   dependencies = {
     'nvim-lua/plenary.nvim',

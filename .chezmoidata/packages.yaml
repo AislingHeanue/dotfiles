@@ -85,6 +85,7 @@ packages:
       - noto-fonts-emoji
       - obs-studio
       - obsidian
+      - openai-codex
       - openssh
       - pnpm
       - pre-commit
@@ -101,7 +102,6 @@ packages:
       - rustup #hi
       - tailscale
       - timeshift
-      - tinygo
       - tmux
       - trash-cli # obsidian uses this
       - tree
@@ -144,7 +144,6 @@ packages:
       - meld
       - nvidia-open
       - nvm
-      - openai-codex
       - postgresql
       - sof-firmware
       - sops
@@ -171,6 +170,11 @@ packages:
     home:
       - arch-update
       - betterdiscordctl
+      - flutter-bin
+      - android-platform
+      - android-sdk-build-tools
+      - android-sdk-cmdline-tools-latest
+      - android-sdk-platform-tools
       - nvidia-580xx-dkms
     work:
       - aws-cli-bin

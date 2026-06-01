@@ -43,7 +43,7 @@ return {
         {
           pane = 2,
           section = "terminal",
-          cmd = "~/.config/nvim/header.sh $PWD something", -- removing "something" here gives a (bad) cached value that I don't know how to destroy.
+          cmd = "~/.config/nvim/header.sh $PWD && echo", -- removing "something" here gives a (bad) cached value that I don't know how to destroy.
           ttl = 0,
           height = 8,
           padding = 2,
@@ -165,37 +165,37 @@ return {
     -- },
 
     -- close current buffer
-    { "<leader>q",        function() Snacks.bufdelete() end,               desc = "[Q]uit buffer" },
+    { "<leader>q",        function() Snacks.bufdelete() end,                             desc = "[Q]uit buffer" },
 
     -- git stuff (bit messy)
-    { "<leader>gg",       function() Snacks.lazygit() end,                 desc = "Lazygit" },
-    { "<leader>go",       function() Snacks.gitbrowse() end,               desc = "[O]pen on remote" },
-    { "<leader>gi",       function() Snacks.git.blame_line() end,          desc = "View Git Blame [I]nfo" },
-    { "<leader>gf",       function() Snacks.lazygit.log_file() end,        desc = "[F]ile History" },
-    { "<leader>gl",       function() Snacks.lazygit.log() end,             desc = "[L]og commits" },
+    { "<leader>gg",       function() Snacks.lazygit() end,                               desc = "Lazygit" },
+    { "<leader>go",       function() Snacks.gitbrowse() end,                             desc = "[O]pen on remote" },
+    { "<leader>gi",       function() Snacks.git.blame_line() end,                        desc = "View Git Blame [I]nfo" },
+    { "<leader>gf",       function() Snacks.lazygit.log_file() end,                      desc = "[F]ile History" },
+    { "<leader>gl",       function() Snacks.lazygit.log() end,                           desc = "[L]og commits" },
 
     -- rename
-    { "<leader>rf",       function() Snacks.rename.rename_file() end,      desc = "[F]ile" },
+    { "<leader>rf",       function() Snacks.rename.rename_file() end,                    desc = "[F]ile" },
 
     -- matching references (from 'words')
-    { "]r",               function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Matching Reference",               mode = { "n", "t" } },
-    { "[r",               function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Matching Reference",               mode = { "n", "t" } },
+    { "]r",               function() Snacks.words.jump(vim.v.count1) end,                desc = "Next Matching Reference",               mode = { "n", "t" } },
+    { "[r",               function() Snacks.words.jump(-vim.v.count1) end,               desc = "Prev Matching Reference",               mode = { "n", "t" } },
 
     -- Explorer
-    { "<A-u>",            function() Snacks.explorer.open() end,           desc = "Open explorer" },
+    { "<A-u>",            function() Snacks.explorer.open() end,                         desc = "Open explorer" },
 
     -- Picker (replaces Telescope)
-    { '<leader>sh',       function() Snacks.picker.help() end,             desc = '[S]earch [H]elp' },
-    { '<leader>sk',       function() Snacks.picker.keymaps() end,          desc = '[S]earch [K]eymaps' },
-    { '<leader>sf',       function() Snacks.picker.files() end,            desc = '[S]earch [F]iles' },
-    { '<leader>ss',       function() Snacks.picker.pickers() end,          desc = '[S]earch [S]elect Picker' },
-    { '<leader>sg',       function() Snacks.picker.grep() end,             desc = '[S]earch by [G]rep' },
-    { '<leader>sd',       function() Snacks.picker.diagnostics() end,      desc = '[S]earch [D]iagnostics' },
-    { '<leader>sr',       function() Snacks.picker.resume() end,           desc = '[S]earch [R]esume' },
+    { '<leader>sh',       function() Snacks.picker.help() end,                           desc = '[S]earch [H]elp' },
+    { '<leader>sk',       function() Snacks.picker.keymaps() end,                        desc = '[S]earch [K]eymaps' },
+    { '<leader>sf',       function() Snacks.picker.files() end,                          desc = '[S]earch [F]iles' },
+    { '<leader>ss',       function() Snacks.picker.pickers() end,                        desc = '[S]earch [S]elect Picker' },
+    { '<leader>sg',       function() Snacks.picker.grep() end,                           desc = '[S]earch by [G]rep' },
+    { '<leader>sd',       function() Snacks.picker.diagnostics() end,                    desc = '[S]earch [D]iagnostics' },
+    { '<leader>sr',       function() Snacks.picker.resume() end,                         desc = '[S]earch [R]esume' },
 
-    -- { 'n',          '<leader>se',                                    telescope.extensions.flutter.commands, { desc = '[S]earch Flutter Commands' } },
-    { '<leader>s.',       function() Snacks.picker.recent() end,           desc = '[S]earch Recent Files ("." for repeat)' },
-    { '<leader><leader>', function() Snacks.picker.buffers() end,          desc = '[ ] Find existing buffers' },
+    { '<leader>se',       function() require('flutter-tools.menu').commands_snack() end, desc = '[S]earch Flutter Commands' },
+    { '<leader>s.',       function() Snacks.picker.recent() end,                         desc = '[S]earch Recent Files ("." for repeat)' },
+    { '<leader><leader>', function() Snacks.picker.buffers() end,                        desc = '[ ] Find existing buffers' },
     { '<leader>sn', function()
       -- https://github.com/vandalt/LazyVim/blob/main/lua/lazyvim/plugins/extras/util/chezmoi.lua
       local results = require("chezmoi.commands").list({

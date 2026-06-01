@@ -21,13 +21,13 @@ return {
     build = ':TSUpdate',
     opts = {},
     config = function(_, opts)
-      require('nvim-treesitter').setup(opts)
-      require('nvim-treesitter').install {
-        'bash', 'c', 'diff', 'html', 'lua', 'luadoc',
-        'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go', 'rust',
-        'typescript', 'tsx', 'javascript', 'jsdoc', 'yaml', 'hcl', 'javascript',
-        'vue'
-      }
+      require('nvim-treesitter').setup()
+      -- require('nvim-treesitter').install {
+      --   'bash', 'c', 'diff', 'html', 'lua', 'luadoc',
+      --   'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go', 'rust',
+      --   'typescript', 'tsx', 'javascript', 'jsdoc', 'yaml', 'hcl', 'javascript',
+      --   'vue'
+      -- }
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
           pcall(vim.treesitter.start)
