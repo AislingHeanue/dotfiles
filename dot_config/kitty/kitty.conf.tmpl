@@ -16,6 +16,10 @@ enable_audio_bell       no
 
 confirm_os_window_close 0
 
+# Allow the 240 Hz display to render at its full refresh rate without tearing
+repaint_delay            4
+sync_to_monitor          yes
+
 tab_bar_edge            top
 tab_bar_style           custom
 
@@ -44,3 +48,12 @@ bold_font        auto
 italic_font      family='NotoSansM Nerd Font Mono' style=Light
 bold_italic_font auto
 # END_KITTY_FONTS
+
+# Programs may ask kitty to open a web link (kitten @ action open_url <url>), so
+# the browser gets a Wayland activation token and comes to the front.
+# open-url-only.py refuses every other remote control command. The socket
+# (kitty-<pid> in the runtime dir, private to this user) works from inside tmux,
+# which does not pass remote control replies back over the terminal.
+allow_remote_control password
+remote_control_password "" open-url-only.py
+listen_on unix:${XDG_RUNTIME_DIR}/kitty

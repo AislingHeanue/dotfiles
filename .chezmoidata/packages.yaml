@@ -179,6 +179,7 @@ packages:
     work:
       - aws-cli-bin
       - aws-sam-cli-bin
+      - aws-session-manager-plugin
       - awsvpnclient
       - beekeeper-studio-bin
       - claude-code
@@ -193,11 +194,12 @@ packages:
       - php74-iconv
       - php74-json
       - php74-mbstring
+      - php74-mysql
       - php74-openssl
       - php74-pgsql
       - php74-phar
-      - php74-ssl
-      - php74-tls
+      # - php74-ssl
+      # - php74-tls
       - postman-bin
       - slack-desktop
       - t3code-bin

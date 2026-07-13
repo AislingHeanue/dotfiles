@@ -1,0 +1,4 @@
+[".tmux/plugins/tmux-smooth-scroll"]
+    type = "git-repo"
+    url = "https://github.com/azorng/tmux-smooth-scroll.git"
+    refreshPeriod = "168h"
